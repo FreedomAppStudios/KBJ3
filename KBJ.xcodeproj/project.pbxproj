@@ -3,16 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96A3CD2D03ADCDA85D12BF8C /* Pods_KBJTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DB5822F4D15B567374EF2C /* Pods_KBJTests.framework */; };
+		C4886E0C1385A802D189C9DD /* Pods_KBJ_KBJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */; };
+		F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228911045C0687F7E8AE0644 /* Pods_KBJ.framework */; };
 		FEC361232673E08200E8AB8B /* KBJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361222673E08200E8AB8B /* KBJApp.swift */; };
 		FEC361252673E08200E8AB8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361242673E08200E8AB8B /* ContentView.swift */; };
 		FEC361272673E08300E8AB8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC361262673E08300E8AB8B /* Assets.xcassets */; };
 		FEC3612A2673E08300E8AB8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC361292673E08300E8AB8B /* Preview Assets.xcassets */; };
 		FEC361342673E08300E8AB8B /* KBJTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361332673E08300E8AB8B /* KBJTests.swift */; };
 		FEC3613E2673E08300E8AB8B /* KBJUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3613D2673E08300E8AB8B /* KBJUITests.swift */; };
+		FEC3614B2673E0A400E8AB8B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3614A2673E0A400E8AB8B /* HomeView.swift */; };
+		FEC3614D2673E0B300E8AB8B /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3614C2673E0B300E8AB8B /* CrewView.swift */; };
+		FEC3614F2673E0C300E8AB8B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3614E2673E0C300E8AB8B /* MenuView.swift */; };
+		FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361502673E0D200E8AB8B /* FoodModel.swift */; };
+		FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */; };
+		FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KBJ_KBJUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		228911045C0687F7E8AE0644 /* Pods_KBJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KBJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32DB5822F4D15B567374EF2C /* Pods_KBJTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KBJTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D345346E4FE9CA7095B2F7E /* Pods-KBJ-KBJUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ-KBJUITests.debug.xcconfig"; path = "Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		62DDC9A5E0D6CA877F9B19D9 /* Pods-KBJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ.debug.xcconfig"; path = "Target Support Files/Pods-KBJ/Pods-KBJ.debug.xcconfig"; sourceTree = "<group>"; };
+		8B7F45E88D323A4933A22BB0 /* Pods-KBJTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.release.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E569CE99EA939994E9D1FB6 /* Pods-KBJ-KBJUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ-KBJUITests.release.xcconfig"; path = "Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C159F740ACBD242F7286D825 /* Pods-KBJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ.release.xcconfig"; path = "Target Support Files/Pods-KBJ/Pods-KBJ.release.xcconfig"; sourceTree = "<group>"; };
+		DD478813C5AD6E4C5226E6C9 /* Pods-KBJTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.debug.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FEC3611F2673E08200E8AB8B /* KBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC361222673E08200E8AB8B /* KBJApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBJApp.swift; sourceTree = "<group>"; };
 		FEC361242673E08200E8AB8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +60,14 @@
 		FEC361332673E08300E8AB8B /* KBJTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBJTests.swift; sourceTree = "<group>"; };
 		FEC361392673E08300E8AB8B /* KBJUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KBJUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC3613D2673E08300E8AB8B /* KBJUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBJUITests.swift; sourceTree = "<group>"; };
+		FEC3614A2673E0A400E8AB8B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FEC3614C2673E0B300E8AB8B /* CrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
+		FEC3614E2673E0C300E8AB8B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		FEC361502673E0D200E8AB8B /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
+		FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FEC361C62673E70E00E8AB8B /* KBJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KBJ.entitlements; sourceTree = "<group>"; };
+		FEC361C72673E71400E8AB8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A3CD2D03ADCDA85D12BF8C /* Pods_KBJTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,12 +91,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4886E0C1385A802D189C9DD /* Pods_KBJ_KBJUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE04E1D95182993F7A3FCBB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				228911045C0687F7E8AE0644 /* Pods_KBJ.framework */,
+				1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */,
+				32DB5822F4D15B567374EF2C /* Pods_KBJTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F394358F793A976CB8E031B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62DDC9A5E0D6CA877F9B19D9 /* Pods-KBJ.debug.xcconfig */,
+				C159F740ACBD242F7286D825 /* Pods-KBJ.release.xcconfig */,
+				3D345346E4FE9CA7095B2F7E /* Pods-KBJ-KBJUITests.debug.xcconfig */,
+				8E569CE99EA939994E9D1FB6 /* Pods-KBJ-KBJUITests.release.xcconfig */,
+				DD478813C5AD6E4C5226E6C9 /* Pods-KBJTests.debug.xcconfig */,
+				8B7F45E88D323A4933A22BB0 /* Pods-KBJTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FEC361162673E08200E8AB8B = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +128,8 @@
 				FEC361322673E08300E8AB8B /* KBJTests */,
 				FEC3613C2673E08300E8AB8B /* KBJUITests */,
 				FEC361202673E08200E8AB8B /* Products */,
+				F394358F793A976CB8E031B9 /* Pods */,
+				BE04E1D95182993F7A3FCBB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +146,13 @@
 		FEC361212673E08200E8AB8B /* KBJ */ = {
 			isa = PBXGroup;
 			children = (
+				FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */,
+				FEC361C72673E71400E8AB8B /* Info.plist */,
+				FEC361C62673E70E00E8AB8B /* KBJ.entitlements */,
 				FEC361222673E08200E8AB8B /* KBJApp.swift */,
-				FEC361242673E08200E8AB8B /* ContentView.swift */,
+				FEC361542673E52500E8AB8B /* Views */,
+				FEC361502673E0D200E8AB8B /* FoodModel.swift */,
+				FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */,
 				FEC361262673E08300E8AB8B /* Assets.xcassets */,
 				FEC361282673E08300E8AB8B /* Preview Content */,
 			);
@@ -124,6 +183,25 @@
 			path = KBJUITests;
 			sourceTree = "<group>";
 		};
+		FEC361542673E52500E8AB8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEC361242673E08200E8AB8B /* ContentView.swift */,
+				FEC361552673E52F00E8AB8B /* Screens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FEC361552673E52F00E8AB8B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FEC3614A2673E0A400E8AB8B /* HomeView.swift */,
+				FEC3614C2673E0B300E8AB8B /* CrewView.swift */,
+				FEC3614E2673E0C300E8AB8B /* MenuView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,9 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEC361412673E08300E8AB8B /* Build configuration list for PBXNativeTarget "KBJ" */;
 			buildPhases = (
+				8E721659FCE117A88DD2A512 /* [CP] Check Pods Manifest.lock */,
 				FEC3611B2673E08200E8AB8B /* Sources */,
 				FEC3611C2673E08200E8AB8B /* Frameworks */,
 				FEC3611D2673E08200E8AB8B /* Resources */,
+				276AD702FB1CA7AFA25B5E60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +228,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEC361442673E08300E8AB8B /* Build configuration list for PBXNativeTarget "KBJTests" */;
 			buildPhases = (
+				7D69B6B3BFE1F1AB5F1AFE40 /* [CP] Check Pods Manifest.lock */,
 				FEC3612B2673E08300E8AB8B /* Sources */,
 				FEC3612C2673E08300E8AB8B /* Frameworks */,
 				FEC3612D2673E08300E8AB8B /* Resources */,
@@ -166,9 +247,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEC361472673E08300E8AB8B /* Build configuration list for PBXNativeTarget "KBJUITests" */;
 			buildPhases = (
+				27C111E64981AE169CF6788B /* [CP] Check Pods Manifest.lock */,
 				FEC361352673E08300E8AB8B /* Sources */,
 				FEC361362673E08300E8AB8B /* Frameworks */,
 				FEC361372673E08300E8AB8B /* Resources */,
+				B5D77D0AC1722B429FD1732B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -204,7 +287,7 @@
 				};
 			};
 			buildConfigurationList = FEC3611A2673E08200E8AB8B /* Build configuration list for PBXProject "KBJ" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -228,6 +311,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */,
+				FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */,
 				FEC3612A2673E08300E8AB8B /* Preview Assets.xcassets in Resources */,
 				FEC361272673E08300E8AB8B /* Assets.xcassets in Resources */,
 			);
@@ -249,11 +334,118 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		276AD702FB1CA7AFA25B5E60 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27C111E64981AE169CF6788B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KBJ-KBJUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D69B6B3BFE1F1AB5F1AFE40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KBJTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E721659FCE117A88DD2A512 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KBJ-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5D77D0AC1722B429FD1732B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FEC3611B2673E08200E8AB8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC3614F2673E0C300E8AB8B /* MenuView.swift in Sources */,
+				FEC3614B2673E0A400E8AB8B /* HomeView.swift in Sources */,
+				FEC3614D2673E0B300E8AB8B /* CrewView.swift in Sources */,
+				FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */,
 				FEC361252673E08200E8AB8B /* ContentView.swift in Sources */,
 				FEC361232673E08200E8AB8B /* KBJApp.swift in Sources */,
 			);
@@ -342,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -397,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -409,18 +601,25 @@
 		};
 		FEC361422673E08300E8AB8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62DDC9A5E0D6CA877F9B19D9 /* Pods-KBJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KBJ/KBJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KBJ/Preview Content\"";
 				DEVELOPMENT_TEAM = P6X6D3C93L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KBJ/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = KBJ;
+				INFOPLIST_KEY_CFBundleName = KBJ;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -439,18 +638,25 @@
 		};
 		FEC361432673E08300E8AB8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C159F740ACBD242F7286D825 /* Pods-KBJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KBJ/KBJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KBJ/Preview Content\"";
 				DEVELOPMENT_TEAM = P6X6D3C93L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KBJ/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = KBJ;
+				INFOPLIST_KEY_CFBundleName = KBJ;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -469,6 +675,7 @@
 		};
 		FEC361452673E08300E8AB8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD478813C5AD6E4C5226E6C9 /* Pods-KBJTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -494,6 +701,7 @@
 		};
 		FEC361462673E08300E8AB8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B7F45E88D323A4933A22BB0 /* Pods-KBJTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -519,6 +727,7 @@
 		};
 		FEC361482673E08300E8AB8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D345346E4FE9CA7095B2F7E /* Pods-KBJ-KBJUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -542,6 +751,7 @@
 		};
 		FEC361492673E08300E8AB8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E569CE99EA939994E9D1FB6 /* Pods-KBJ-KBJUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
