@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
-
+import Firebase
 @main
 struct KBJ: App {
+    // MARK: - Life Cycle
+    init() {
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+    }
+  
     var body: some Scene {
         WindowGroup {
             ContentView()

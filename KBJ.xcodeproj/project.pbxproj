@@ -213,7 +213,7 @@
 				FEC3611B2673E08200E8AB8B /* Sources */,
 				FEC3611C2673E08200E8AB8B /* Frameworks */,
 				FEC3611D2673E08200E8AB8B /* Resources */,
-				247FECD3D86454C0BDDB3407 /* [CP] Embed Pods Frameworks */,
+				60207552C27FDEEA9514A7BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,7 +251,7 @@
 				FEC361352673E08300E8AB8B /* Sources */,
 				FEC361362673E08300E8AB8B /* Frameworks */,
 				FEC361372673E08300E8AB8B /* Resources */,
-				3E6004233C74831CDC5AC549 /* [CP] Embed Pods Frameworks */,
+				5F5FC14A528941508144B163 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,23 +335,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		247FECD3D86454C0BDDB3407 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		27C111E64981AE169CF6788B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +357,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3E6004233C74831CDC5AC549 /* [CP] Embed Pods Frameworks */ = {
+		5F5FC14A528941508144B163 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -389,6 +372,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60207552C27FDEEA9514A7BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7D69B6B3BFE1F1AB5F1AFE40 /* [CP] Check Pods Manifest.lock */ = {

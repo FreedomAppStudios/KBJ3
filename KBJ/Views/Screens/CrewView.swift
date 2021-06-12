@@ -15,48 +15,51 @@ let hour = calendar.component(.hour, from: date)
 let minutes = calendar.component(.minute, from: date)
 let weekDay = Date().dayNumberOfWeek()!
 var dayString = getDayOfWeek(input: weekDay)
-let documentDay = "fridayPM" //getDocument(day: weekDay, hour: hour)
+let documentDay = getDocument(day: weekDay, hour: hour)
 
 
-var db: Firestore!
+let db = Firestore.firestore()
 
 struct CrewView: View {
-    @State var staff = ["Nick"]
+    @State var staff = ["Nick","Nathan", "Emma"]
+    @State var num = 0
     var body: some View {
         NavigationView {
-            List{
-                Text(staff[0])
+            List(staff, id: \.self) { staf in
+                Text(staf)
                     .onAppear {
                         retrieveData()
                     }
-
             }
-            
-            .navigationBarTitle(documentDay)
-        }.onAppear {
-            doSomething()
         }
+        .navigationBarTitle(documentDay)
     }
-    func retrieveData() {
-        staff = []
-        db.collection(documentDay).getDocuments { querySnapshot, error in
-            if let e = error {
-                print("error from retrieving \(e)")
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let person = data["person"] as? String {
-                            staff.append(person)
-                        }
-                    }
-                    if staff == []{
-                        staff = ["error"]
+func retrieveData() {
+    staff = []
+    db.collection(documentDay).addSnapshotListener { querySnapshot, error in
+        if let e = error {
+            //staff = ["error getting documents"]
+        } else {
+            //staff = ["found documents"]
+            if let snapshotDocuments = querySnapshot?.documents {
+                //staff = ["got inside"]
+                for doc in snapshotDocuments {
+                    staff = ["even farther"]
+                    let data = doc.data()
+                    if let person = data["person"] as? String {
+                        //let count = staff.count
+                        let staffMember = person
+                        staff.append(staffMember)
+                        num = 1
                     }
                 }
             }
         }
     }
+//    if staff == []{
+//        staff = ["this error"]
+//    }
+}
 }
 
 struct CrewView_Previews: PreviewProvider {
@@ -88,3 +91,4 @@ func getDocument(day: Int, hour: Int) -> String {
 func doSomething() {
     dayString = "hello"
 }
+
