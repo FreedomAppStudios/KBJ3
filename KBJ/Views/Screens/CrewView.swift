@@ -23,6 +23,7 @@ let db = Firestore.firestore()
 struct CrewView: View {
     @State var staff = ["Nick","Nathan", "Emma"]
     @State var num = 0
+    @State var hasRun = false
     var body: some View {
         NavigationView {
             List(staff, id: \.self) { staf in
@@ -31,35 +32,40 @@ struct CrewView: View {
                         retrieveData()
                     }
             }
+            .navigationBarTitle(dayString)
         }
-        .navigationBarTitle(documentDay)
     }
 func retrieveData() {
-    staff = []
-    db.collection(documentDay).addSnapshotListener { querySnapshot, error in
-        if let e = error {
-            //staff = ["error getting documents"]
-        } else {
-            //staff = ["found documents"]
-            if let snapshotDocuments = querySnapshot?.documents {
-                //staff = ["got inside"]
-                for doc in snapshotDocuments {
-                    staff = ["even farther"]
-                    let data = doc.data()
-                    if let person = data["person"] as? String {
-                        //let count = staff.count
-                        let staffMember = person
-                        staff.append(staffMember)
-                        num = 1
+    //staff = ["nil"]
+    if hasRun == false {
+        hasRun = true
+        staff = []
+        db.collection(documentDay).getDocuments { querySnapshot, error in
+            if let e = error {
+                //staff = ["error getting documents"]
+            } else {
+                //staff = ["found documents"]
+                if let snapshotDocuments = querySnapshot?.documents {
+                    //staff = ["got inside"]
+                    for doc in snapshotDocuments {
+                        //staff = ["even farther"]
+                        let data = doc.data()
+                        if let person = data["person"] as? String {
+                            //let count = staff.count
+                            let staffMember = person
+                            staff.append(staffMember)
+                            num = 1
+                        }
                     }
                 }
             }
         }
+        //    if staff == []{
+        //        staff = ["this error"]
+        //    }
     }
-//    if staff == []{
-//        staff = ["this error"]
-//    }
 }
+    
 }
 
 struct CrewView_Previews: PreviewProvider {
