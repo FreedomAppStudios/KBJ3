@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 1
+    @State private var selection = 0
     var body: some View {
         TabView(selection: $selection) {
-            CrewView()
-                .tabItem {
-                    Label("Crew", systemImage: "person.fill")
-                        //.foregroundColor(.black)
-                }
-                .tag(0)
             HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                         //.foregroundColor(.black)
                 }
-                .tag(1)
+                .tag(0)
             MenuView()
                 .tabItem {
                     Label("Menu", systemImage: "list.dash")
                         //.foregroundColor(.black)
                 }
+                .tag(1)
+            CrewView()
+                .tabItem {
+                    Label("Crew", systemImage: "person.fill")
+                        //.foregroundColor(.black)
+                }
                 .tag(2)
+           
+            DealsView()
+                .tabItem {
+                    Label("Deals", systemImage: "dollarsign.square.fill")
+                        //.foregroundColor(.black)
+                }
+                .tag(3)
         }
     }
 }
