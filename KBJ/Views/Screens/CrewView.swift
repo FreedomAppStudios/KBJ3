@@ -16,8 +16,12 @@ let minutes = calendar.component(.minute, from: date)
 let weekDay = Date().dayNumberOfWeek()!
 var dayString = getDayOfWeek(input: weekDay)
 let documentDay = getDocument(day: weekDay, hour: hour)
-
-
+let components = date.get(.day, .month, .year)
+let day = components.day
+let month = components.month
+let year = components.year
+let newMonth = switchMonth(number: month!)
+let topicString = dayString + ", " + newMonth + " " + String(day!)
 let db = Firestore.firestore()
 
 struct CrewView: View {
@@ -27,42 +31,48 @@ struct CrewView: View {
     @State var num = 0
     @State var hasRun = false
     var body: some View {
-        NavigationView {
-            List(bodies, id: \.name) { staf in
-                VStack {
-                    Text(staf.name)
-                        .bold()
-                        .onAppear {
-                            retrieveData()
+        NavigationView{
+                List(bodies, id: \.name) { staf in
+                    Group {
+                        VStack {
+                            HStack {
+                                Text(staf.name)
+                                    .bold()
+                                    .onAppear {
+                                        retrieveData()
+                                    }
+                                    .font(.title)
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text(staf.title)
+                                //.foregroundColor(.white)
+                                    .font(.caption)
+                                    .frame(alignment: .leading)
+                                Spacer()
+                            }
                         }
-                        .font(.title)
-                    
-                    Text(staf.title)
-                        //.foregroundColor(.white)
-                        .font(.caption)
-                        
+                    }
                     
                 }
-            }
-            
-            //.colorMultiply(Color.red).padding(.top)
-            .navigationBarTitle(dayString)
-            
+                
+                .navigationBarTitle(topicString)
         }
-        .listRowBackground(Color.red)
-        .background(Color.red)
         
+        
+    //    init() {
+    //        UITableView.appearance().separatorStyle = .none
+    //        UITableViewCell.appearance().backgroundColor = .white
+    //        UITableView.appearance().backgroundColor = .white
+    //    }
     }
-//    init() {
-//        UITableView.appearance().separatorStyle = .none
-//        UITableViewCell.appearance().backgroundColor = .white
-//        UITableView.appearance().backgroundColor = .white
-//    }
 func retrieveData() {
     //staff = ["nil"]
     if hasRun == false {
         hasRun = true
         staff = []
+        bodies = []
         db.collection(documentDay).getDocuments { querySnapshot, error in
             if let e = error {
                 staff = ["error fetching server"]
@@ -91,9 +101,7 @@ func retrieveData() {
         //    }
     }
 }
-    
 }
-
 struct CrewView_Previews: PreviewProvider {
     static var previews: some View {
         CrewView()
@@ -127,4 +135,44 @@ struct cellShape {
     let name: String
     let title: String
 }
-
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+    
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
+}
+func switchMonth(number : Int) -> String{
+    var monthString = ""
+    switch number {
+    case 1  :
+        monthString = "January"
+    case 2  :
+        monthString = "February"
+    case 3  :
+        monthString = "March"
+    case 4  :
+        monthString = "April"
+    case 5  :
+        monthString = "May"
+    case 6  :
+        monthString = "June"
+    case 7  :
+        monthString = "July"
+    case 8  :
+        monthString = "August"
+    case 9  :
+        monthString = "September"
+    case 10  :
+        monthString = "October"
+    case 11  :
+        monthString = "November"
+    case 12  :
+        monthString = "December"
+    default :
+        monthString = "Error"
+    }
+    return monthString
+}
