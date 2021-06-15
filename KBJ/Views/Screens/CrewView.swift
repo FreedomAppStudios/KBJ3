@@ -32,6 +32,7 @@ struct CrewView: View {
     @State var hasRun = false
     var body: some View {
         NavigationView{
+            if #available(iOS 15.0, *) {
                 List(bodies, id: \.name) { staf in
                     Group {
                         VStack {
@@ -56,8 +57,38 @@ struct CrewView: View {
                     }
                     
                 }
-                
+                .refreshable {
+                    retrieveData()
+                }
                 .navigationBarTitle(topicString)
+            } else {
+                // Fallback on earlier versions
+                List(bodies, id: \.name) { staf in
+                    Group {
+                        VStack {
+                            HStack {
+                                Text(staf.name)
+                                    .bold()
+                                    .onAppear {
+                                        retrieveData()
+                                    }
+                                    .font(.title)
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text(staf.title)
+                                //.foregroundColor(.white)
+                                    .font(.caption)
+                                    .frame(alignment: .leading)
+                                Spacer()
+                            }
+                        }
+                    }
+                    
+                }
+                .navigationBarTitle(topicString)
+            }
         }
         
         
@@ -118,7 +149,7 @@ func getDayOfWeek(input: Int) -> String {
     return days[new]
 }
 func getDocument(day: Int, hour: Int) -> String {
-    let days = ["sunday","monday","tueday","wednesday", "thursday","friday", "saturday"]
+    let days = ["sunday","monday","tuesday","wednesday", "thursday","friday", "saturday"]
     var shift = "hello world"
     if hour >= 16 {
         shift = "PM"
