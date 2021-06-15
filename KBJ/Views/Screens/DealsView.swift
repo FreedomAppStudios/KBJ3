@@ -43,6 +43,7 @@ struct DealsView: View {
                     .bold()
                     .foregroundColor(.white)
                     .font(.system(size: 50))
+                    .multilineTextAlignment(.center)
                 Text("Show this to your server at the end of the meal")
                     .foregroundColor(.white)
                     .font(.caption)
