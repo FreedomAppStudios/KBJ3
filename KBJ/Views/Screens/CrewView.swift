@@ -147,7 +147,7 @@ extension Date {
     }
 }
 func getDayOfWeek(input: Int) -> String {
-    let days = ["Sunday","Monday","Tueday","Wednesday", "Thursday","Friday", "Saturday"]
+    let days = ["Sunday","Monday","Tuesday","Wednesday", "Thursday","Friday", "Saturday"]
     let new = input-1
     return days[new]
 }
