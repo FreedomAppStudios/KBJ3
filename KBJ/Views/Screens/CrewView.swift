@@ -58,7 +58,10 @@ struct CrewView: View {
                     
                 }
                 .refreshable {
+                    hasRun = false
+//                    print("hello")
                     retrieveData()
+//                    print("done")
                 }
                 .navigationBarTitle(topicString)
             } else {
