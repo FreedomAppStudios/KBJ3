@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
+        //Text("hello world")
         NavigationView {
             List{
                 Group {
@@ -68,6 +69,6 @@ struct MenuView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
-            .preferredColorScheme(.light)
+            //.preferredColorScheme(.light)
     }
 }
