@@ -57,21 +57,18 @@ struct MenuView: View {
                             Text(food.foodName)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
                             Spacer()
                         }
                         HStack {
                             Text(food.toppings)
                                 .font(.caption)
                                 .frame(alignment: .leading)
-                                .foregroundColor(.black)
                             Spacer()
                             
                         }
                     }
                     Text(food.price)
                         .font(.headline)
-                        .foregroundColor(.black)
         //            Image(image)
         //                .resizable()
         //                .aspectRatio(contentMode: .fill)
@@ -79,7 +76,6 @@ struct MenuView: View {
                 }
             }
                             .navigationBarTitle("Menu")
-                            .foregroundColor(.black)
             }
         }
     }
