@@ -1,0 +1,6 @@
+framework module Pods_KBJ_KBJUITests {
+  umbrella header "Pods-KBJ-KBJUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
