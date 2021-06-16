@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct FoodCell: View {
+struct FoodCellView: View {
     let foodName: String
     let toppings: String
     let image: String
@@ -66,4 +66,9 @@ struct FriesRow: View {
         }
     }
 }
-
+struct FoodCell {
+    let foodName: String
+    let toppings: String
+    let image: String
+    let price: String
+}
