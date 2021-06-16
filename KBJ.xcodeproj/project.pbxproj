@@ -617,6 +617,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KBJ/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kenny's";
 				INFOPLIST_KEY_CFBundleExecutable = KBJ;
 				INFOPLIST_KEY_CFBundleName = KBJ;
 				INFOPLIST_KEY_CFBundleVersion = 1;
@@ -654,6 +655,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KBJ/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kenny's";
 				INFOPLIST_KEY_CFBundleExecutable = KBJ;
 				INFOPLIST_KEY_CFBundleName = KBJ;
 				INFOPLIST_KEY_CFBundleVersion = 1;
