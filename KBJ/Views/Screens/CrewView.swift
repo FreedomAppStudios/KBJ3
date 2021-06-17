@@ -32,39 +32,39 @@ struct CrewView: View {
     @State var hasRun = false
     var body: some View {
         NavigationView{
-            if #available(iOS 15.0, *) {
-                List(bodies, id: \.name) { staf in
-                    Group {
-                        VStack {
-                            HStack {
-                                Text(staf.name)
-                                    .bold()
-                                    .onAppear {
-                                        retrieveData()
-                                    }
-                                    .font(.title)
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Text(staf.title)
-                                //.foregroundColor(.white)
-                                    .font(.caption)
-                                    .frame(alignment: .leading)
-                                Spacer()
-                            }
-                        }
-                    }
-                    
-                }
-                .refreshable {
-                    hasRun = false
-//                    print("hello")
-                    retrieveData()
-//                    print("done")
-                }
-                .navigationBarTitle(topicString)
-            } else {
+//            if #available(iOS 15.0, *) {
+//                List(bodies, id: \.name) { staf in
+//                    Group {
+//                        VStack {
+//                            HStack {
+//                                Text(staf.name)
+//                                    .bold()
+//                                    .onAppear {
+//                                        retrieveData()
+//                                    }
+//                                    .font(.title)
+//                                Spacer()
+//                            }
+//
+//                            HStack {
+//                                Text(staf.title)
+//                                //.foregroundColor(.white)
+//                                    .font(.caption)
+//                                    .frame(alignment: .leading)
+//                                Spacer()
+//                            }
+//                        }
+//                    }
+//
+//                }
+//                .refreshable {
+//                    hasRun = false
+////                    print("hello")
+//                    retrieveData()
+////                    print("done")
+//                }
+//                .navigationBarTitle(topicString)
+//            } else {
                 // Fallback on earlier versions
                 List(bodies, id: \.name) { staf in
                     Group {
@@ -92,7 +92,6 @@ struct CrewView: View {
                 }
                 .navigationBarTitle(topicString)
             }
-        }
         
         
     //    init() {

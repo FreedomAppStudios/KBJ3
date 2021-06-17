@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DealsView: View {
     @State private var angle: Double = 0
-    @State private var zoom: Double = 0
+    @State private var zoom: CGFloat = 0
     @State var message = ""
     @State var image = ""
     var body: some View {
@@ -23,6 +23,8 @@ struct DealsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250) //250
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                    .scaleEffect(zoom)
+                    .animation(.easeIn)
                     .onAppear(perform: {
                         retrieveData()
                         if zoom < 1 {
@@ -34,8 +36,7 @@ struct DealsView: View {
                     .onDisappear(perform: {
                         zoom = 0
                     })
-                    .scaleEffect(zoom)
-                    .animation(.easeIn)
+                    
 //                    .rotationEffect(.degrees(angle))
 //                    .animation(.interpolatingSpring(mass: 1, stiffness: 1, damping: 2, initialVelocity: 2))
                 Text(message)
