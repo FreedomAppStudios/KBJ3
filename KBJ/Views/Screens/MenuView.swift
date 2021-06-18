@@ -44,9 +44,9 @@ struct MenuView: View {
                                 FoodCell(foodName: "Coleslaw",toppings: "", image: "salad", price: "$2.49")
     ]
     @State private var searchTerms = ""
-//    private var filteredFoods: [String] {
-//        
-//    }
+    //    private var filteredFoods: [String] {
+    //
+    //    }
     var body: some View {
         //Text("hello world")
         NavigationView {
@@ -69,16 +69,18 @@ struct MenuView: View {
                     }
                     Text(food.price)
                         .font(.headline)
-        //            Image(image)
-        //                .resizable()
-        //                .aspectRatio(contentMode: .fill)
-        //                .frame(width: 60, height: 60, alignment: .leading)
+                    //            Image(image)
+                    //                .resizable()
+                    //                .aspectRatio(contentMode: .fill)
+                    //                .frame(width: 60, height: 60, alignment: .leading)
                 }
             }
-                            .navigationBarTitle("Menu")
-            }
+            .navigationBarTitle("Menu")
+            
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+}
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()

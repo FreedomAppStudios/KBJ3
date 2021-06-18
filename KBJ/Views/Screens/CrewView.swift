@@ -92,7 +92,7 @@ struct CrewView: View {
                 }
                 .navigationBarTitle(topicString)
             }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
         
     //    init() {
     //        UITableView.appearance().separatorStyle = .none

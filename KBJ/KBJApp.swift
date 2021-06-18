@@ -73,6 +73,7 @@ struct KBJ: App {
         WindowGroup {
             ContentView()
         }
+        
     }
 }
 @available(iOS 10, *)
