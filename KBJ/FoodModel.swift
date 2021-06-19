@@ -76,4 +76,13 @@ struct order {
     let foodName: String
     let price: String
     let place: Int
+    var cooked = 0
+    mutating func cookUp() {
+        if cooked < 5 {
+            cooked += 1
+        } else {
+            cooked = 0
+        }
+
+    }
 }

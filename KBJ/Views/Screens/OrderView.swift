@@ -14,6 +14,8 @@ struct OrderView: View {
     @State var hasRun = false
     @State var refreshed = false
     @State var sum = 0.0
+    let degreesOfDoneness = ["R", "MR", "M", "MW", "WD"]
+    @State var rotate = 0
     var body: some View {
         NavigationView {
             if orderedItems.count == 0 {
@@ -40,7 +42,7 @@ struct OrderView: View {
                         HStack {
                             Text(item.foodName)
                                 .bold()
-                                .font(.title)
+                                .font(.title2)
                                 .onAppear(perform: {
                                     orderedItems.append(contentsOf: foodOrdered)
                                     foodOrdered = []
@@ -54,6 +56,14 @@ struct OrderView: View {
                                     price.remove(at: price.startIndex)
                                     sum += Double(price)!
                                 })
+                            Button (degreesOfDoneness[rotate]) {
+                                if rotate < (degreesOfDoneness.count - 1) {
+                                    rotate += 1
+                                } else {
+                                    rotate = 0
+                                }
+                            }
+                            Spacer()
                             Button (action:{
                                 var price = item.price
                                 price.remove(at: price.startIndex)
@@ -70,6 +80,7 @@ struct OrderView: View {
                             }) {
                                 Image(systemName: "minus.circle.fill")
                             }
+                            .buttonStyle(BorderlessButtonStyle())
                         }
                     }
                     .navigationTitle("Order")
@@ -77,7 +88,7 @@ struct OrderView: View {
                         RoundedRectangle(cornerRadius: 25)
                             .frame(width: 250, height: 50)
                             .foregroundColor(.red)
-                        Text("$" + String(sum))
+                        Text("$" + String(sum.truncate(places: 2)))
                             .font(.system(size: 45))
                             .bold()
                     }
@@ -112,4 +123,9 @@ extension StringProtocol {
     subscript(range: PartialRangeFrom<Int>) -> SubSequence { self[index(startIndex, offsetBy: range.lowerBound)...] }
     subscript(range: PartialRangeThrough<Int>) -> SubSequence { self[...index(startIndex, offsetBy: range.upperBound)] }
     subscript(range: PartialRangeUpTo<Int>) -> SubSequence { self[..<index(startIndex, offsetBy: range.upperBound)] }
+}
+extension Double {
+    func truncate(places : Int)-> Double {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
 }
