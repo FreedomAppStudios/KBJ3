@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96A3CD2D03ADCDA85D12BF8C /* Pods_KBJTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DB5822F4D15B567374EF2C /* Pods_KBJTests.framework */; };
+		BBDDDBE6267D54340007CDDF /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDBE5267D54340007CDDF /* OrderView.swift */; };
 		C4886E0C1385A802D189C9DD /* Pods_KBJ_KBJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */; };
 		F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228911045C0687F7E8AE0644 /* Pods_KBJ.framework */; };
 		FEC361232673E08200E8AB8B /* KBJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361222673E08200E8AB8B /* KBJApp.swift */; };
@@ -50,6 +51,7 @@
 		62DDC9A5E0D6CA877F9B19D9 /* Pods-KBJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ.debug.xcconfig"; path = "Target Support Files/Pods-KBJ/Pods-KBJ.debug.xcconfig"; sourceTree = "<group>"; };
 		8B7F45E88D323A4933A22BB0 /* Pods-KBJTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.release.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E569CE99EA939994E9D1FB6 /* Pods-KBJ-KBJUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ-KBJUITests.release.xcconfig"; path = "Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BBDDDBE5267D54340007CDDF /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		C159F740ACBD242F7286D825 /* Pods-KBJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ.release.xcconfig"; path = "Target Support Files/Pods-KBJ/Pods-KBJ.release.xcconfig"; sourceTree = "<group>"; };
 		DD478813C5AD6E4C5226E6C9 /* Pods-KBJTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.debug.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FEC3611F2673E08200E8AB8B /* KBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +202,7 @@
 				FEC3614A2673E0A400E8AB8B /* HomeView.swift */,
 				FEC3614C2673E0B300E8AB8B /* CrewView.swift */,
 				FEC3614E2673E0C300E8AB8B /* MenuView.swift */,
+				BBDDDBE5267D54340007CDDF /* OrderView.swift */,
 				FEFB83B7267691B400E4BD8B /* DealsView.swift */,
 			);
 			path = Screens;
@@ -446,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC3614F2673E0C300E8AB8B /* MenuView.swift in Sources */,
+				BBDDDBE6267D54340007CDDF /* OrderView.swift in Sources */,
 				FEC3614B2673E0A400E8AB8B /* HomeView.swift in Sources */,
 				FEFB83B8267691B400E4BD8B /* DealsView.swift in Sources */,
 				FEC3614D2673E0B300E8AB8B /* CrewView.swift in Sources */,
@@ -632,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jessicamorris.KBJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -670,7 +674,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jessicamorris.KBJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

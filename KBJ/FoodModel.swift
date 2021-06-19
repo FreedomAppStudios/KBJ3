@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+var foodOrdered = [order]()
 struct FoodCellView: View {
     let foodName: String
     let toppings: String
@@ -35,10 +35,10 @@ struct FoodCellView: View {
             Text(price)
                 .font(.headline)
                 .foregroundColor(.white)
-//            Image(image)
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .frame(width: 60, height: 60, alignment: .leading)
+            //            Image(image)
+            //                .resizable()
+            //                .aspectRatio(contentMode: .fill)
+            //                .frame(width: 60, height: 60, alignment: .leading)
         }
     }
 }
@@ -59,10 +59,10 @@ struct FriesRow: View {
             Text(price)
                 .font(.headline)
                 .foregroundColor(.white)
-//            Image("fries")
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .frame(width: 60, height: 60, alignment: .leading)
+            //            Image("fries")
+            //                .resizable()
+            //                .aspectRatio(contentMode: .fill)
+            //                .frame(width: 60, height: 60, alignment: .leading)
         }
     }
 }
@@ -71,4 +71,9 @@ struct FoodCell {
     let toppings: String
     let image: String
     let price: String
+}
+struct order {
+    let foodName: String
+    let price: String
+    let place: Int
 }

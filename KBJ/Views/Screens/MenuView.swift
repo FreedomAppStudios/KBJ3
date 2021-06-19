@@ -44,6 +44,9 @@ struct MenuView: View {
                                 FoodCell(foodName: "Coleslaw",toppings: "", image: "salad", price: "$2.49")
     ]
     @State private var searchTerms = ""
+    @State private var showingAlert = false
+    @State var index = 0
+
     //    private var filteredFoods: [String] {
     //
     //    }
@@ -73,10 +76,15 @@ struct MenuView: View {
                     //                .resizable()
                     //                .aspectRatio(contentMode: .fill)
                     //                .frame(width: 60, height: 60, alignment: .leading)
+                    Button (action:{
+                        foodOrdered.append(order(foodName: food.foodName, price: food.price, place: index))
+                        index+=1
+                    }) {
+                        Image(systemName: "plus.square.fill")
+                    }
                 }
             }
             .navigationBarTitle("Menu")
-            
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
