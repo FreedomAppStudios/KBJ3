@@ -48,6 +48,13 @@ struct OrderView: View {
                                     foodOrdered = []
                                 })
                             Spacer()
+                            Button (degreesOfDoneness[rotate]) {
+                                if rotate < (degreesOfDoneness.count - 1) {
+                                    rotate += 1
+                                } else {
+                                    rotate = 0
+                                }
+                            }
                             Text(item.price)
                                 .bold()
                                 .font(.title)
@@ -56,14 +63,6 @@ struct OrderView: View {
                                     price.remove(at: price.startIndex)
                                     sum += Double(price)!
                                 })
-                            Button (degreesOfDoneness[rotate]) {
-                                if rotate < (degreesOfDoneness.count - 1) {
-                                    rotate += 1
-                                } else {
-                                    rotate = 0
-                                }
-                            }
-                            Spacer()
                             Button (action:{
                                 var price = item.price
                                 price.remove(at: price.startIndex)
