@@ -8,14 +8,17 @@
 import SwiftUI
 var itemNumber = 0
 struct OrderView: View {
-    @State var orderedItems = [order]()
+    @State var orderedItems = [Order]()
     @State var kill = 0
     @State var killed = [Int]()
     @State var hasRun = false
     @State var refreshed = false
     @State var sum = 0.0
-    let degreesOfDoneness = ["R", "MR", "M", "MW", "WD"]
+    @State var cookMessage = "R"
+    let degreesOfDoneness = ["R", "MR", "M", "MW", "WD",""]
+    @State var allTemps = [Int]()
     @State var rotate = 0
+    @State var new = 0
     var body: some View {
         NavigationView {
             if orderedItems.count == 0 {
@@ -29,6 +32,7 @@ struct OrderView: View {
                                 orderedItems.append(contentsOf: foodOrdered)
                                 foodOrdered = []
                                 hasRun = true
+                                sum = 0
                             }
                             
                         })
@@ -48,12 +52,41 @@ struct OrderView: View {
                                     foodOrdered = []
                                 })
                             Spacer()
-                            Button (degreesOfDoneness[rotate]) {
-                                if rotate < (degreesOfDoneness.count - 1) {
-                                    rotate += 1
-                                } else {
-                                    rotate = 0
+                            Button (cookMessage) {
+                                
+                                @State var num = 0
+                                @State var row = 0
+                                row = 7
+                                for x in orderedItems {
+                                    let isEqual = x.foodName == item.foodName
+                                    row = 6
+                                    if isEqual == true{
+                                        row = 5//num
+                                    }
+                                    num += 1
                                 }
+                                print(item.type)
+//                                if item.type == "burger" {
+                                    let current = allTemps[row]
+
+                                    if current  > 4 {
+                                        new = current + 1
+                                    } else {
+                                        new = 0
+                                    }
+                                    allTemps[row] = new
+
+                                    //                                    if rotate < (degreesOfDoneness.count - 1) {
+                                    //                                        rotate += 1
+                                    //                                    } else {
+                                    //                                        rotate = 0
+                                    //                                    }
+                                    cookMessage = String(row)//String(row)//degreesOfDoneness[allTemps[row]]
+//                                }
+                            }
+                            .onAppear {
+                                allTemps.append(1)
+                                
                             }
                             Text(item.price)
                                 .bold()
@@ -128,3 +161,30 @@ extension Double {
         return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
     }
 }
+//struct IndexedCollection<Base: RandomAccessCollection>: RandomAccessCollection {
+//    typealias Index = Base.Index
+//    typealias Element = (index: Index, element: Base.Element)
+//
+//    let base: Base
+//
+//    var startIndex: Index { base.startIndex }
+//
+//    // corrected typo: base.endIndex, instead of base.startIndex
+//    var endIndex: Index { base.endIndex }
+//
+//    func index(after i: Index) -> Index {
+//        base.index(after: i)
+//    }
+//
+//    func index(before i: Index) -> Index {
+//        base.index(before: i)
+//    }
+//
+//    func index(_ i: Index, offsetBy distance: Int) -> Index {
+//        base.index(i, offsetBy: distance)
+//    }
+//
+//    subscript(position: Index) -> Element {
+//        (index: position, element: base[position])
+//    }
+//}

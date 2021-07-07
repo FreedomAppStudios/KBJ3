@@ -76,12 +76,12 @@ struct MenuView: View {
                     //                .resizable()
                     //                .aspectRatio(contentMode: .fill)
                     //                .frame(width: 60, height: 60, alignment: .leading)
-                    Button (action:{
-                        foodOrdered.append(order(foodName: food.foodName, price: food.price, place: index))
-                        index+=1
-                    }) {
-                        Image(systemName: "plus.square.fill")
-                    }
+//                    Button (action:{
+//                        foodOrdered.append(Order(foodName: food.foodName, price: food.price, place: index, type: food.image))
+//                        index+=1
+//                    }) {
+//                        Image(systemName: "plus.square.fill")
+//                    }
                 }
             }
             .navigationBarTitle("Menu")

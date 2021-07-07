@@ -10,8 +10,9 @@ import SwiftUI
 struct DealsView: View {
     @State private var angle: Double = 0
     @State private var zoom: CGFloat = 0
-    @State var message = ""
-    @State var image = ""
+    @State var message = "No connection"
+    @State var image = "wifi"
+    @State var smaller = "please try again later or connect to wifi"
     var body: some View {
         ZStack {
             Color(.systemRed)
@@ -45,7 +46,7 @@ struct DealsView: View {
                     .foregroundColor(.white)
                     .font(.system(size: 50))
                     .multilineTextAlignment(.center)
-                Text("Show this to your server at the end of the meal")
+                Text(smaller)
                     .foregroundColor(.white)
                     .font(.caption)
                 Spacer()
@@ -56,7 +57,7 @@ struct DealsView: View {
     func retrieveData() {
             db.collection("deals").getDocuments { querySnapshot, error in
                 if let e = error {
-                    message = "error fetching server"
+                    message = "No connection"
                     print(e)
                 } else {
                     //staff = ["found documents"]
@@ -65,10 +66,11 @@ struct DealsView: View {
                         for doc in snapshotDocuments {
                             //staff = ["even farther"]
                             let data = doc.data()
-                            if let message1 = data["deal"] as? String, let image1 = data["image"] as? String{
+                            if let message1 = data["deal"] as? String, let image1 = data["image"] as? String, let note = data["message"] as? String{
                                 //let count = staff.count
                                message = message1
                                 image = image1
+                                smaller = note
                             }
                         }
                     }

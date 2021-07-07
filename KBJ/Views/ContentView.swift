@@ -23,25 +23,25 @@ struct ContentView: View {
                         //.foregroundColor(.black)
                 }
                 .tag(1)
-            OrderView()
-                .tabItem {
-                    Label("Order", systemImage: "cart.fill")
-                        //.foregroundColor(.black)
-                }
-                .tag(2)
+//            OrderView()
+//                .tabItem {
+//                    Label("Order", systemImage: "cart.fill")
+//                        //.foregroundColor(.black)
+//                }
+//                .tag(2)
             CrewView()
                 .tabItem {
                     Label("Crew", systemImage: "person.fill")
                         //.foregroundColor(.black)
                 }
-                .tag(3)
+                .tag(2)
            
             DealsView()
                 .tabItem {
                     Label("Deals", systemImage: "dollarsign.square.fill")
                         //.foregroundColor(.black)
                 }
-                .tag(4)
+                .tag(3)
         }
     }
 }
