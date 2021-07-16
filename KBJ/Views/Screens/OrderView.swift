@@ -8,6 +8,8 @@
 import SwiftUI
 var itemNumber = 0
 struct OrderView: View {
+    @State var show = false
+    @State var cookShow = false
     @State var orderedItems = [Order]()
     @State var kill = 0
     @State var killed = [Int]()
@@ -41,102 +43,143 @@ struct OrderView: View {
                     
                 }
             } else {
-                VStack {
-                    List(orderedItems, id: \.foodName) { item in
-                        HStack {
-                            Text(item.foodName)
-                                .bold()
-                                .font(.title2)
-                                .onAppear(perform: {
-                                    orderedItems.append(contentsOf: foodOrdered)
-                                    foodOrdered = []
-                                })
-                            Spacer()
-                            Button (cookMessage) {
-                                
-                                @State var num = 0
-                                @State var row = 0
-                                row = 7
-                                for x in orderedItems {
-                                    let isEqual = x.foodName == item.foodName
-                                    row = 6
-                                    if isEqual == true{
-                                        row = 5//num
-                                    }
-                                    num += 1
-                                }
-                                print(item.type)
-//                                if item.type == "burger" {
-                                    let current = allTemps[row]
-
-                                    if current  > 4 {
-                                        new = current + 1
-                                    } else {
-                                        new = 0
-                                    }
-                                    allTemps[row] = new
-
-                                    //                                    if rotate < (degreesOfDoneness.count - 1) {
-                                    //                                        rotate += 1
-                                    //                                    } else {
-                                    //                                        rotate = 0
-                                    //                                    }
-                                    cookMessage = String(row)//String(row)//degreesOfDoneness[allTemps[row]]
-//                                }
-                            }
-                            .onAppear {
-                                allTemps.append(1)
-                                
-                            }
-                            Text(item.price)
-                                .bold()
-                                .font(.title)
-                                .onAppear(perform: {
+                ZStack {
+                    VStack {
+                        List(orderedItems, id: \.foodName) { item in
+                            HStack {
+                                Text(item.foodName)
+                                    .bold()
+                                    .font(.title2)
+                                    .onAppear(perform: {
+                                        orderedItems.append(contentsOf: foodOrdered)
+                                        foodOrdered = []
+                                    })
+                                Spacer()
+                                Text(item.price)
+                                    .bold()
+                                    .font(.title)
+                                    .onAppear(perform: {
+                                        var price = item.price
+                                        price.remove(at: price.startIndex)
+                                        sum += Double(price)!
+                                    })
+                                Button (action:{
                                     var price = item.price
                                     price.remove(at: price.startIndex)
-                                    sum += Double(price)!
-                                })
-                            Button (action:{
-                                var price = item.price
-                                price.remove(at: price.startIndex)
-                                sum -= Double(price)!
-                                
-                                kill = item.place
-                                for num in killed {
-                                    if kill > num {
-                                        kill -= 1
+                                    sum -= Double(price)!
+                                    
+                                    kill = item.place
+                                    for num in killed {
+                                        if kill > num {
+                                            kill -= 1
+                                        }
                                     }
+                                    killed.append(kill)
+                                    orderedItems.remove(at: kill)
+                                }) {
+                                    Image(systemName: "minus.circle.fill")
                                 }
-                                killed.append(kill)
-                                orderedItems.remove(at: kill)
-                            }) {
-                                Image(systemName: "minus.circle.fill")
+                                .buttonStyle(BorderlessButtonStyle())
+                                Button  {
+                                    withAnimation{
+                                        show.toggle()
+                                    }
+                                } label: {
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.white)
+                                }
+                                
+                                
                             }
-                            .buttonStyle(BorderlessButtonStyle())
                         }
+                        .navigationTitle("Order")
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 25)
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(.red)
+                            Text("$" + String(sum.truncate(places: 2)))
+                                .font(.system(size: 45))
+                                .bold()
+                        }
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
-                    .navigationTitle("Order")
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 25)
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(.red)
-                        Text("$" + String(sum.truncate(places: 2)))
-                            .font(.system(size: 45))
-                            .bold()
+                    if self.show {
+                        GeometryReader{geometry in
+                            
+                            Menu()
+                                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                        }
+                        .background(Color.black.opacity(0.65))
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            self.show.toggle()
+                        }
+                        
                     }
-                    Spacer()
-                    Spacer()
-                    Spacer()
+                    if self.cookShow {
+                        GeometryReader{geometry in
+                            
+                            CookMenu()
+                            //.position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                        }
+                        .background(Color.black.opacity(0.65))
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            self.cookShow.toggle()
+                        }
+                        
+                    }
                 }
             }
         }
         .onDisappear(perform: {
             hasRun = false
         })
-        
+    }
+    struct Menu: View {
+        //        @State var show : Bool
+        //        @State var cookShow : Bool
+        let buttonWidth: CGFloat = 40
+        let buttonHeight: CGFloat = 38
+        var body: some View{
+            VStack(alignment: .leading, spacing: 15 ) {
+                
+                Button(action: {
+                    //                    OrderView.show.toggle()
+                    //                    OrderView.cookShow.toggle()
+                }) {
+                    HStack(spacing: 12){
+                        Image(systemName: "flame")
+                            .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
+                        Text("Temperture")
+                            .foregroundColor(.white)
+                            .padding()
+                        
+                    }
+                    .frame(width: 200)
+                }
+                .background(Color(.systemRed))
+                .cornerRadius(15)
+                Button(action: {
+                    
+                }) {
+                    HStack(spacing: 12){
+                        Image(systemName: "pencil.circle")
+                            .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
+                        Text("Complications")
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    .frame(width: 200)
+                }
+                .background(Color(.systemRed))
+                .cornerRadius(15)
+            }
+        }
     }
 }
-
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
         OrderView()
@@ -188,3 +231,70 @@ extension Double {
 //        (index: position, element: base[position])
 //    }
 //}
+
+struct CookMenu: View {
+    var body: some View{
+        VStack(alignment: .leading, spacing: 15 ) {
+            
+            //rare
+            Button(action: {
+                
+            }) {
+                HStack(spacing: 12){
+                    Text("Rare")
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                }
+                .frame(width: 200)
+            }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
+            
+            //MR
+            Button(action: {
+                
+            }) {
+                HStack(spacing: 12){
+                    Text("Medium Rare")
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                }
+                .frame(width: 200)
+            }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
+            
+            //MW
+            Button(action: {
+                
+            }) {
+                HStack(spacing: 12){
+                    Text("Medium Well")
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                }
+                .frame(width: 200)
+            }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
+            //WD
+            Button(action: {
+                
+            }) {
+                HStack(spacing: 12){
+                    Text("Well Done")
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                }
+                .frame(width: 200)
+            }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
+        }
+        
+    }
+}

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Kenny’s 4.png",
+      "filename" : "old.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Kenny’s 4@2x.png",
+      "filename" : "old@2x.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Kenny’s 4@3x.png",
+      "filename" : "old@3x.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
