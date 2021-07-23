@@ -23,6 +23,7 @@
 		FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361502673E0D200E8AB8B /* FoodModel.swift */; };
 		FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */; };
 		FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */; };
+		FECD3BB726AB39B500F12017 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD3BB626AB39B500F12017 /* CategoryView.swift */; };
 		FEE7AD8D26AA6FBF00899784 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7AD8C26AA6FBF00899784 /* MapView.swift */; };
 		FEFB83B8267691B400E4BD8B /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB83B7267691B400E4BD8B /* DealsView.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		FEC361C62673E70E00E8AB8B /* KBJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KBJ.entitlements; sourceTree = "<group>"; };
 		FEC361C72673E71400E8AB8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FECD3BB626AB39B500F12017 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		FEE7AD8C26AA6FBF00899784 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FEFB83B7267691B400E4BD8B /* DealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				FEC361502673E0D200E8AB8B /* FoodModel.swift */,
+				FECD3BB626AB39B500F12017 /* CategoryView.swift */,
 				FEE7AD8C26AA6FBF00899784 /* MapView.swift */,
 			);
 			path = Models;
@@ -467,6 +470,7 @@
 				FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */,
 				FEC361252673E08200E8AB8B /* ContentView.swift in Sources */,
 				FEE7AD8D26AA6FBF00899784 /* MapView.swift in Sources */,
+				FECD3BB726AB39B500F12017 /* CategoryView.swift in Sources */,
 				FEC361232673E08200E8AB8B /* KBJApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "download.jpeg",
+      "filename" : "cheese fries.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "download@2x.jpeg",
+      "filename" : "cheese fries@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "download@3x.jpeg",
+      "filename" : "cheese fries@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
