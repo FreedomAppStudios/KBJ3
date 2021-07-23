@@ -14,12 +14,11 @@ struct HomeView: View {
             Color(.systemRed)
                 .ignoresSafeArea(edges: .top)
             VStack{
-                Spacer()
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                //Spacer()
+                MapView()
+                    .frame(height: 250)
+                    .ignoresSafeArea(edges: .top)
+                LogoView()
                 Text("Kenny's Burger Joint")
                     .foregroundColor(.white)
                     .font(.title)
@@ -31,9 +30,10 @@ struct HomeView: View {
                 Spacer()
                 
                 Spacer()
-               
+                
                 InfoView(text: "(972) 378-0999", imageName: "phone.fill")
                 LinkView(text: "kennysburgerjoint.com", imageName: "globe")
+                Spacer()
                 
             }
         }
@@ -85,5 +85,20 @@ struct LinkView: View {
                         .padding()
                 }
              })
+    }
+}
+
+struct LogoView: View {
+    var body: some View {
+        Image("logo")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200)
+            .clipShape(Circle())
+            .overlay(Circle()
+                        .stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 7)
+            .offset(y: -140)
+            .padding(.bottom, -130)
     }
 }
