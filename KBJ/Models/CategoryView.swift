@@ -19,6 +19,7 @@ struct CategoryItem: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             Text(food.foodName)
                 .font(.caption)
+                .foregroundColor(.primary)
         }
         .padding(.leading, 15)
     }
@@ -26,6 +27,6 @@ struct CategoryItem: View {
 
 struct CategoryItem_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItem(food: FoodCell(foodName: "Nick", toppings: "yunny", image: "Burger", price: "String"))
+        CategoryItem(food: FoodCell(foodName: "Nick", toppings: "yunny", image: "Burger", price: "String", type: "Burger"))
     }
 }

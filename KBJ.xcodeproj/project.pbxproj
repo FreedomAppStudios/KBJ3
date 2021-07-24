@@ -24,6 +24,7 @@
 		FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */; };
 		FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */; };
 		FECD3BB726AB39B500F12017 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD3BB626AB39B500F12017 /* CategoryView.swift */; };
+		FECD3BB926ABB94600F12017 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD3BB826ABB94600F12017 /* FoodView.swift */; };
 		FEE7AD8D26AA6FBF00899784 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7AD8C26AA6FBF00899784 /* MapView.swift */; };
 		FEFB83B8267691B400E4BD8B /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB83B7267691B400E4BD8B /* DealsView.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		FEC361C72673E71400E8AB8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FECD3BB626AB39B500F12017 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		FECD3BB826ABB94600F12017 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		FEE7AD8C26AA6FBF00899784 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FEFB83B7267691B400E4BD8B /* DealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				FEC361222673E08200E8AB8B /* KBJApp.swift */,
 				FEE7AD8B26AA6F9B00899784 /* Models */,
 				FEC361542673E52500E8AB8B /* Views */,
+				FEC361552673E52F00E8AB8B /* Controllers */,
 				FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */,
 				FEC361262673E08300E8AB8B /* Assets.xcassets */,
 				FEC361282673E08300E8AB8B /* Preview Content */,
@@ -195,21 +198,21 @@
 			isa = PBXGroup;
 			children = (
 				FEC361242673E08200E8AB8B /* ContentView.swift */,
-				FEC361552673E52F00E8AB8B /* Screens */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FEC361552673E52F00E8AB8B /* Screens */ = {
+		FEC361552673E52F00E8AB8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FEC3614A2673E0A400E8AB8B /* HomeView.swift */,
 				FEC3614C2673E0B300E8AB8B /* CrewView.swift */,
 				FEC3614E2673E0C300E8AB8B /* MenuView.swift */,
+				FECD3BB826ABB94600F12017 /* FoodView.swift */,
 				BBDDDBE5267D54340007CDDF /* OrderView.swift */,
 				FEFB83B7267691B400E4BD8B /* DealsView.swift */,
 			);
-			path = Screens;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		FEE7AD8B26AA6F9B00899784 /* Models */ = {
@@ -465,6 +468,7 @@
 				FEC3614F2673E0C300E8AB8B /* MenuView.swift in Sources */,
 				BBDDDBE6267D54340007CDDF /* OrderView.swift in Sources */,
 				FEC3614B2673E0A400E8AB8B /* HomeView.swift in Sources */,
+				FECD3BB926ABB94600F12017 /* FoodView.swift in Sources */,
 				FEFB83B8267691B400E4BD8B /* DealsView.swift in Sources */,
 				FEC3614D2673E0B300E8AB8B /* CrewView.swift in Sources */,
 				FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */,
