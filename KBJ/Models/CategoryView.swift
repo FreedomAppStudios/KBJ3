@@ -21,6 +21,7 @@ struct CategoryItem: View {
             Text(food.foodName)
                 .font(.caption)
                 .foregroundColor(.primary)
+                .frame(maxWidth: 100, alignment: .leading)
         }
         .padding(.leading, 15)
     }
