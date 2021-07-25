@@ -16,9 +16,9 @@ struct MenuView: View {
                 let type = "Taco"
                 let description = "Tortilla, Chicken, Slaw"
                 let price = "$12.99"
-                let image = "Burger"
+                let image = "Nashville"
                 NavigationLink(destination: FoodView(name: name, type: type, description: description, price: price, image: image)) {
-                    Image("Burger")
+                    Image(image)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 350, height: 200)

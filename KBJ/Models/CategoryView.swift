@@ -14,6 +14,7 @@ struct CategoryItem: View {
         VStack(alignment: .leading) {
             Image(food.image)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 100, height: 100)
                 .cornerRadius(5)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
