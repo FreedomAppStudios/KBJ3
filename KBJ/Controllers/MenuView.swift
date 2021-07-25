@@ -121,10 +121,12 @@ struct MenuView: View {
                     .frame(height: frameHeight)
                     
                 }
+                
             }
+            
             .navigationBarTitle("Menu")
         }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     //List Menu
     //        NavigationView {

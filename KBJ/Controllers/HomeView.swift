@@ -61,7 +61,7 @@ struct InfoView: View {
                     .foregroundColor(.red)
             })
             .padding()
-        
+            .frame(maxWidth: 550)
     }
 }
 struct LinkView: View {
@@ -83,6 +83,7 @@ struct LinkView: View {
                                 .foregroundColor(.red)
                         })
                         .padding()
+                        .frame(maxWidth: 550)
                 }
              })
     }
