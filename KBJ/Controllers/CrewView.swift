@@ -106,7 +106,7 @@ func retrieveData() {
         hasRun = true
         staff = []
         bodies = []
-        db.collection(documentDay).getDocuments { querySnapshot, error in
+        db.collection(documentDay).addSnapshotListener { querySnapshot, error in
             if let e = error {
                 staff = ["error fetching server"]
                 print(e)

@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
 var itemNumber = 0
 struct OrderView: View {
     @State var show = false
     @State var cookShow = false
-    @State var orderedItems = [Order]()
+    @State var orderedItems = [OrderItem]()
     @State var kill = 0
     @State var killed = [Int]()
     @State var hasRun = false
@@ -19,23 +20,25 @@ struct OrderView: View {
     @State var cookMessage = "R"
     let degreesOfDoneness = ["R", "MR", "M", "MW", "WD",""]
     @State var allTemps = [Int]()
+    @State var message = "Nothing Ordered"
     @State var rotate = 0
+    @State var lastPlace = 0
     @State var new = 0
+    let db = Firestore.firestore()
     var body: some View {
         NavigationView {
+            
             if orderedItems.count == 0 {
                 VStack {
-                    Text("Nothing Ordered")
+                    Text(message)
                         .font(.title)
                         .bold()
                         .italic()
                         .onAppear(perform: {
-                            if hasRun == false {
-                                orderedItems.append(contentsOf: foodOrdered)
-                                foodOrdered = []
-                                hasRun = true
-                                sum = 0
-                            }
+                            orderedItems.append(contentsOf: foodOrdered)
+                            foodOrdered = []
+                            hasRun = true
+                            sum = 0
                             
                         })
                     Spacer()
@@ -45,8 +48,9 @@ struct OrderView: View {
             } else {
                 ZStack {
                     VStack {
-                        List(orderedItems, id: \.foodName) { item in
+                        List(orderedItems, id: \.id) { thing in
                             HStack {
+                                let item = thing.item
                                 Text(item.foodName)
                                     .bold()
                                     .font(.title2)
@@ -63,123 +67,101 @@ struct OrderView: View {
                                         price.remove(at: price.startIndex)
                                         sum += Double(price)!
                                     })
-                                Button (action:{
-                                    var price = item.price
-                                    price.remove(at: price.startIndex)
-                                    sum -= Double(price)!
-                                    
-                                    kill = item.place
-                                    for num in killed {
-                                        if kill > num {
-                                            kill -= 1
-                                        }
-                                    }
-                                    killed.append(kill)
-                                    orderedItems.remove(at: kill)
-                                }) {
-                                    Image(systemName: "minus.circle.fill")
-                                }
-                                .buttonStyle(BorderlessButtonStyle())
-                                Button  {
-                                    withAnimation{
-                                        show.toggle()
-                                    }
-                                } label: {
-                                    Image(systemName: "info.circle.fill")
-                                        .foregroundColor(.white)
-                                }
-                                
+                                //                                Button (action:{
+                                //                                    var price = item.price
+                                //                                    price.remove(at: price.startIndex)
+                                //                                    sum -= Double(price)!
+                                //
+                                //                                    kill = 0
+                                //                                    for num in killed {
+                                //                                        if kill > num {
+                                //                                            kill -= 1
+                                //                                        }
+                                //                                    }
+                                //                                    killed.append(kill)
+                                //                                    orderedItems.remove(at: kill)
+                                //                                }) {
+                                //                                    Image(systemName: "minus.circle.fill")
+                                //                                }
+                                //                                .buttonStyle(BorderlessButtonStyle())
+                                //                                Button  {
+                                //                                    withAnimation{
+                                //                                        show.toggle()
+                                //                                    }
+                                //                                } label: {
+                                //                                    Image(systemName: "info.circle.fill")
+                                //                                        .foregroundColor(.white)
+                                //                                }
+                            }
+                        }
+                        SumBar(sum: sum)
+                        Button {
+                            placeOrder(order: orderedItems)
+                            message = "Order Placed!"
+                            foodOrdered = []
+                            orderedItems = []
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 25)
+                                    .frame(width: 300, height: 45, alignment: .center)
+                                Text("Place Order")
+                                    .foregroundColor(.white)
                                 
                             }
                         }
-                        .navigationTitle("Order")
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(width: 250, height: 50)
-                                .foregroundColor(.red)
-                            Text("$" + String(sum.truncate(places: 2)))
-                                .font(.system(size: 45))
-                                .bold()
-                        }
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                    }
-                    if self.show {
-                        GeometryReader{geometry in
-                            
-                            Menu()
-                                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                        }
-                        .background(Color.black.opacity(0.65))
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            self.show.toggle()
-                        }
-                        
-                    }
-                    if self.cookShow {
-                        GeometryReader{geometry in
-                            
-                            CookMenu()
-                            //.position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                        }
-                        .background(Color.black.opacity(0.65))
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            self.cookShow.toggle()
-                        }
                         
                     }
                 }
+                
+                
             }
         }
-        .onDisappear(perform: {
-            hasRun = false
-        })
+        .navigationTitle("Order")
+        
     }
-    struct Menu: View {
-        //        @State var show : Bool
-        //        @State var cookShow : Bool
-        let buttonWidth: CGFloat = 40
-        let buttonHeight: CGFloat = 38
-        var body: some View{
-            VStack(alignment: .leading, spacing: 15 ) {
-                
-                Button(action: {
-                    //                    OrderView.show.toggle()
-                    //                    OrderView.cookShow.toggle()
-                }) {
-                    HStack(spacing: 12){
-                        Image(systemName: "flame")
-                            .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
-                        Text("Temperture")
-                            .foregroundColor(.white)
-                            .padding()
-                        
-                    }
-                    .frame(width: 200)
-                }
-                .background(Color(.systemRed))
-                .cornerRadius(15)
-                Button(action: {
+}
+struct Menu: View {
+    //        @State var show : Bool
+    //        @State var cookShow : Bool
+    let buttonWidth: CGFloat = 40
+    let buttonHeight: CGFloat = 38
+    var body: some View{
+        VStack(alignment: .leading, spacing: 15 ) {
+            
+            Button(action: {
+                //                    OrderView.show.toggle()
+                //                    OrderView.cookShow.toggle()
+            }) {
+                HStack(spacing: 12){
+                    Image(systemName: "flame")
+                        .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
+                    Text("Temperture")
+                        .foregroundColor(.white)
+                        .padding()
                     
-                }) {
-                    HStack(spacing: 12){
-                        Image(systemName: "pencil.circle")
-                            .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
-                        Text("Complications")
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    .frame(width: 200)
                 }
-                .background(Color(.systemRed))
-                .cornerRadius(15)
+                .frame(width: 200)
             }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
+            Button(action: {
+                
+            }) {
+                HStack(spacing: 12){
+                    Image(systemName: "pencil.circle")
+                        .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
+                    Text("Complications")
+                        .foregroundColor(.white)
+                        .padding()
+                }
+                .frame(width: 200)
+            }
+            .background(Color(.systemRed))
+            .cornerRadius(15)
         }
     }
 }
+
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
         OrderView()
@@ -232,69 +214,107 @@ extension Double {
 //    }
 //}
 
-struct CookMenu: View {
+
+
+
+//struct IsFood : View {
+//    @State var orderedItems : Array<OrderItem>
+//    @State var sum: Double
+//
+//    var body: some View{
+//        ZStack {
+//            VStack {
+//                List(orderedItems, id: \orderedItems.foodName) { item in
+//                    HStack {
+//                        Text(item.foodName)
+//                            .bold()
+//                            .font(.title2)
+//                            .onAppear(perform: {
+//                                orderedItems.append(contentsOf: foodOrdered)
+//                                foodOrdered = []
+//                            })
+//                        Spacer()
+//                        Text(item.price)
+//                            .bold()
+//                            .font(.title)
+//                            .onAppear(perform: {
+//                                var price = item.price
+//                                price.remove(at: price.startIndex)
+//                                sum += Double(price)!
+//                            })
+//                        Button (action:{
+//                            var price = item.price
+//                            price.remove(at: price.startIndex)
+//                            sum -= Double(price)!
+//
+//                            kill = item.place
+//                            for num in killed {
+//                                if kill > num {
+//                                    kill -= 1
+//                                }
+//                            }
+//                            killed.append(kill)
+//                            orderedItems.remove(at: kill)
+//                        }) {
+//                            Image(systemName: "minus.circle.fill")
+//                        }
+//                        .buttonStyle(BorderlessButtonStyle())
+//                        Button  {
+//                            withAnimation{
+//                                show.toggle()
+//                            }
+//                        } label: {
+//                            Image(systemName: "info.circle.fill")
+//                                .foregroundColor(.white)
+//                        }
+//
+//
+//                    }
+//                }
+//                .navigationTitle("Order")
+//                ZStack {
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .frame(width: 250, height: 50)
+//                        .foregroundColor(.red)
+//                    Text("$" + String(sum.truncate(places: 2)))
+//                        .font(.system(size: 45))
+//                        .bold()
+//                }
+//                Spacer()
+//                Spacer()
+//                Spacer()
+//            }
+//
+//
+//        }
+//    }
+//}
+struct SumBar : View {
+    @State var sum : Double
     var body: some View{
-        VStack(alignment: .leading, spacing: 15 ) {
-            
-            //rare
-            Button(action: {
-                
-            }) {
-                HStack(spacing: 12){
-                    Text("Rare")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                .frame(width: 200)
+        VStack {
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 25)
+                    .frame(width: 250, height: 50)
+                    .foregroundColor(.red)
+                Text("$" + String(sum.truncate(places: 2)))
+                    .font(.system(size: 45))
+                    .bold()
             }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
-            
-            //MR
-            Button(action: {
-                
-            }) {
-                HStack(spacing: 12){
-                    Text("Medium Rare")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                .frame(width: 200)
-            }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
-            
-            //MW
-            Button(action: {
-                
-            }) {
-                HStack(spacing: 12){
-                    Text("Medium Well")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                .frame(width: 200)
-            }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
-            //WD
-            Button(action: {
-                
-            }) {
-                HStack(spacing: 12){
-                    Text("Well Done")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                .frame(width: 200)
-            }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
         }
-        
     }
 }
+func placeOrder(order : Array<OrderItem>) {
+    for item in order {
+        let thing = item.item
+        let name = thing.foodName
+        let cook = item.temp
+        db.collection("Orders").addDocument(data: [
+            "FoodName" : name,
+            "FoodCook" : cook
+        ])
+    }
+    
+}
+

@@ -17,7 +17,7 @@ struct MenuView: View {
                 let description = "Tortilla, Chicken, Slaw"
                 let price = "$12.99"
                 let image = "Nashville"
-                NavigationLink(destination: FoodView(name: name, type: type, description: description, price: price, image: image)) {
+                NavigationLink(destination: FoodView(name: name, type: type, description: description, price: price, image: image, item: FoodCell(foodName: name, toppings: description, image: image, price: price, type: type))) {
                     Image(image)
                         .resizable()
                         .scaledToFill()
@@ -49,7 +49,7 @@ struct MenuView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 0) {
                             ForEach(foodFries, id: \.foodName) { food in
-                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image)) {
+                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)) {
                                     CategoryItem(food: food)
                                 }
                             }
@@ -64,7 +64,7 @@ struct MenuView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 5) {
                             ForEach(foodApps, id: \.foodName) { food in
-                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image)) {
+                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)) {
                                     CategoryItem(food: food)
                                 }
                             }
@@ -80,7 +80,7 @@ struct MenuView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 5) {
                             ForEach(foodBurgers, id: \.foodName) { food in
-                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image)) {
+                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)) {
                                     CategoryItem(food: food)
                                 }
                             }
@@ -96,7 +96,7 @@ struct MenuView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 5) {
                             ForEach(foodSandwiches, id: \.foodName) { food in
-                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image)) {
+                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: FoodCell(foodName: food.foodName, toppings: food.toppings, image: food.image, price: food.price, type: food.type))) {
                                     CategoryItem(food: food)
                                 }
                             }
@@ -112,7 +112,7 @@ struct MenuView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 5) {
                             ForEach(foodSalads, id: \.foodName) { food in
-                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image)) {
+                                NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: FoodCell(foodName: food.foodName, toppings: food.toppings, image: food.image, price: food.price, type: food.type))) {
                                     CategoryItem(food: food)
                                 }
                             }
@@ -168,7 +168,10 @@ struct MenuView: View {
 }
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        Group {
+            MenuView()
+            MenuView()
+        }
         //.preferredColorScheme(.light)
     }
 }

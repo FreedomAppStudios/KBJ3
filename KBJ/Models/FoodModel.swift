@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-var foodOrdered = [Order]()
+var foodOrdered = [OrderItem]()
 struct FoodCellView: View {
     let foodName: String
     let toppings: String
@@ -73,6 +73,12 @@ struct FoodCell {
     let price: String
     let type: String
 }
+struct OrderItem: Identifiable {
+    let item: FoodCell
+    let temp: String
+    let id = UUID()
+}
+
 struct Order {
     var foodName: String
     let price: String
