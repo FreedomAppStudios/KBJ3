@@ -109,7 +109,7 @@ struct OrderView: View {
                                 
                             }
                         }
-                        
+                        .navigationTitle("Order")
                     }
                 }
                 
