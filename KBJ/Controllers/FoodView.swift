@@ -162,7 +162,7 @@ struct FoodView: View {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 25.0)
                                             .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        Text("Submit")
+                                        Text("Add to Order")
                                             .foregroundColor(.white)
                                             .onReceive(timer) { _ in
                                                 if timeRemaining > 1 {

@@ -94,7 +94,6 @@ struct OrderView: View {
                                 //                                }
                             }
                         }
-                        SumBar(sum: sum)
                         Button {
                             placeOrder(order: orderedItems)
                             message = "Order Placed!"
@@ -186,135 +185,22 @@ extension Double {
         return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
     }
 }
-//struct IndexedCollection<Base: RandomAccessCollection>: RandomAccessCollection {
-//    typealias Index = Base.Index
-//    typealias Element = (index: Index, element: Base.Element)
-//
-//    let base: Base
-//
-//    var startIndex: Index { base.startIndex }
-//
-//    // corrected typo: base.endIndex, instead of base.startIndex
-//    var endIndex: Index { base.endIndex }
-//
-//    func index(after i: Index) -> Index {
-//        base.index(after: i)
-//    }
-//
-//    func index(before i: Index) -> Index {
-//        base.index(before: i)
-//    }
-//
-//    func index(_ i: Index, offsetBy distance: Int) -> Index {
-//        base.index(i, offsetBy: distance)
-//    }
-//
-//    subscript(position: Index) -> Element {
-//        (index: position, element: base[position])
-//    }
-//}
 
-
-
-
-//struct IsFood : View {
-//    @State var orderedItems : Array<OrderItem>
-//    @State var sum: Double
-//
-//    var body: some View{
-//        ZStack {
-//            VStack {
-//                List(orderedItems, id: \orderedItems.foodName) { item in
-//                    HStack {
-//                        Text(item.foodName)
-//                            .bold()
-//                            .font(.title2)
-//                            .onAppear(perform: {
-//                                orderedItems.append(contentsOf: foodOrdered)
-//                                foodOrdered = []
-//                            })
-//                        Spacer()
-//                        Text(item.price)
-//                            .bold()
-//                            .font(.title)
-//                            .onAppear(perform: {
-//                                var price = item.price
-//                                price.remove(at: price.startIndex)
-//                                sum += Double(price)!
-//                            })
-//                        Button (action:{
-//                            var price = item.price
-//                            price.remove(at: price.startIndex)
-//                            sum -= Double(price)!
-//
-//                            kill = item.place
-//                            for num in killed {
-//                                if kill > num {
-//                                    kill -= 1
-//                                }
-//                            }
-//                            killed.append(kill)
-//                            orderedItems.remove(at: kill)
-//                        }) {
-//                            Image(systemName: "minus.circle.fill")
-//                        }
-//                        .buttonStyle(BorderlessButtonStyle())
-//                        Button  {
-//                            withAnimation{
-//                                show.toggle()
-//                            }
-//                        } label: {
-//                            Image(systemName: "info.circle.fill")
-//                                .foregroundColor(.white)
-//                        }
-//
-//
-//                    }
-//                }
-//                .navigationTitle("Order")
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 25)
-//                        .frame(width: 250, height: 50)
-//                        .foregroundColor(.red)
-//                    Text("$" + String(sum.truncate(places: 2)))
-//                        .font(.system(size: 45))
-//                        .bold()
-//                }
-//                Spacer()
-//                Spacer()
-//                Spacer()
-//            }
-//
-//
-//        }
-//    }
-//}
-struct SumBar : View {
-    @State var sum : Double
-    var body: some View{
-        VStack {
-            Spacer()
-            ZStack {
-                RoundedRectangle(cornerRadius: 25)
-                    .frame(width: 250, height: 50)
-                    .foregroundColor(.red)
-                Text("$" + String(sum.truncate(places: 2)))
-                    .font(.system(size: 45))
-                    .bold()
-            }
-        }
-    }
-}
-func placeOrder(order : Array<OrderItem>) {
+func placeOrder(order : Array<OrderItem>) -> String {
+    var simList = [SimpleOrder]()
+    var fullOrder = "Name: ____ \n"
     for item in order {
-        let thing = item.item
-        let name = thing.foodName
-        let cook = item.temp
-        db.collection("Orders").addDocument(data: [
-            "FoodName" : name,
-            "FoodCook" : cook
-        ])
+        let foodName = "Item: " + String(item.item.foodName)
+        let cookTemp = "Temp: " + String(item.temp)
+        simList.append(SimpleOrder(name: foodName, temp: cookTemp))
     }
-    
+    for order in simList {
+        fullOrder.append("\nItem: \(order.name)")
+        fullOrder.append("\nTemp: \(order.temp)\n")
+    }
+    db.collection("z-orders").addDocument(data: [
+        "order" : fullOrder
+    ])
+    return "Order placed"
 }
 

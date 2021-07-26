@@ -78,7 +78,11 @@ struct OrderItem: Identifiable {
     let temp: String
     let id = UUID()
 }
-
+struct SimpleOrder: Identifiable {
+    let name: String
+    let temp: String
+    let id = UUID()
+}
 struct Order {
     var foodName: String
     let price: String
