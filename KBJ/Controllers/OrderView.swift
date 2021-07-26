@@ -67,31 +67,7 @@ struct OrderView: View {
                                         price.remove(at: price.startIndex)
                                         sum += Double(price)!
                                     })
-                                //                                Button (action:{
-                                //                                    var price = item.price
-                                //                                    price.remove(at: price.startIndex)
-                                //                                    sum -= Double(price)!
-                                //
-                                //                                    kill = 0
-                                //                                    for num in killed {
-                                //                                        if kill > num {
-                                //                                            kill -= 1
-                                //                                        }
-                                //                                    }
-                                //                                    killed.append(kill)
-                                //                                    orderedItems.remove(at: kill)
-                                //                                }) {
-                                //                                    Image(systemName: "minus.circle.fill")
-                                //                                }
-                                //                                .buttonStyle(BorderlessButtonStyle())
-                                //                                Button  {
-                                //                                    withAnimation{
-                                //                                        show.toggle()
-                                //                                    }
-                                //                                } label: {
-                                //                                    Image(systemName: "info.circle.fill")
-                                //                                        .foregroundColor(.white)
-                                //                                }
+                                
                             }
                         }
                         Button {
@@ -108,6 +84,10 @@ struct OrderView: View {
                                 
                             }
                         }
+                        Spacer()
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .opacity(0)
+                            .frame(width: 100, height: 75, alignment: .center)
                         .navigationTitle("Order")
                     }
                 }
@@ -117,47 +97,6 @@ struct OrderView: View {
         }
         .navigationTitle("Order")
         
-    }
-}
-struct Menu: View {
-    //        @State var show : Bool
-    //        @State var cookShow : Bool
-    let buttonWidth: CGFloat = 40
-    let buttonHeight: CGFloat = 38
-    var body: some View{
-        VStack(alignment: .leading, spacing: 15 ) {
-            
-            Button(action: {
-                //                    OrderView.show.toggle()
-                //                    OrderView.cookShow.toggle()
-            }) {
-                HStack(spacing: 12){
-                    Image(systemName: "flame")
-                        .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
-                    Text("Temperture")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                }
-                .frame(width: 200)
-            }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
-            Button(action: {
-                
-            }) {
-                HStack(spacing: 12){
-                    Image(systemName: "pencil.circle")
-                        .foregroundColor(.white).frame(width: buttonWidth, height: buttonHeight, alignment: .leading)
-                    Text("Complications")
-                        .foregroundColor(.white)
-                        .padding()
-                }
-                .frame(width: 200)
-            }
-            .background(Color(.systemRed))
-            .cornerRadius(15)
-        }
     }
 }
 
@@ -186,7 +125,7 @@ extension Double {
     }
 }
 
-func placeOrder(order : Array<OrderItem>) -> String {
+func placeOrder(order : Array<OrderItem>) {
     var simList = [SimpleOrder]()
     var fullOrder = "Name: ____ \n"
     for item in order {
@@ -201,6 +140,30 @@ func placeOrder(order : Array<OrderItem>) -> String {
     db.collection("z-orders").addDocument(data: [
         "order" : fullOrder
     ])
-    return "Order placed"
 }
 
+//                                Button (action:{
+//                                    var price = item.price
+//                                    price.remove(at: price.startIndex)
+//                                    sum -= Double(price)!
+//
+//                                    kill = 0
+//                                    for num in killed {
+//                                        if kill > num {
+//                                            kill -= 1
+//                                        }
+//                                    }
+//                                    killed.append(kill)
+//                                    orderedItems.remove(at: kill)
+//                                }) {
+//                                    Image(systemName: "minus.circle.fill")
+//                                }
+//                                .buttonStyle(BorderlessButtonStyle())
+//                                Button  {
+//                                    withAnimation{
+//                                        show.toggle()
+//                                    }
+//                                } label: {
+//                                    Image(systemName: "info.circle.fill")
+//                                        .foregroundColor(.white)
+//                                }
