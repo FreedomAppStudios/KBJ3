@@ -11,8 +11,8 @@ struct MapView: View {
     
     //cordinares
     @State private var region = MKCoordinateRegion(
-           center: CLLocationCoordinate2D(latitude: 33.053632, longitude: -96.795217),
-           span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+           center: CLLocationCoordinate2D(latitude: 33.06133, longitude: -96.8175),
+           span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
        )
     
     var body: some View {
@@ -33,5 +33,6 @@ struct AnnotatedItem: Identifiable {
     var coordinate: CLLocationCoordinate2D
 }
 private var pointsOfInterest = [
-    AnnotatedItem(name: "Kenny's", coordinate: .init(latitude: 33.053632, longitude: -96.795217))
+    AnnotatedItem(name: "Plano", coordinate: .init(latitude: 33.053632, longitude: -96.795217)),
+    AnnotatedItem(name: "Frisco", coordinate: .init(latitude: 33.089035, longitude: -96.839788))
     ]

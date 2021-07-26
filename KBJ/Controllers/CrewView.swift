@@ -28,44 +28,25 @@ struct CrewView: View {
     @State var staff = ["Nick","Nathan", "Emma"]
     @State var jobs = ["Nick","Nathan", "Emma"]
     @State var bodies = [cellShape(name: "Nick", title: "Host")]
-    @State var num = 0
-    @State var hasRun = false
+    @State var num = -1
+    @State var hasRun = 1
     var body: some View {
         NavigationView{
-//            if #available(iOS 15.0, *) {
-//                List(bodies, id: \.name) { staf in
-//                    Group {
-//                        VStack {
-//                            HStack {
-//                                Text(staf.name)
-//                                    .bold()
-//                                    .onAppear {
-//                                        retrieveData()
-//                                    }
-//                                    .font(.title)
-//                                Spacer()
-//                            }
-//
-//                            HStack {
-//                                Text(staf.title)
-//                                //.foregroundColor(.white)
-//                                    .font(.caption)
-//                                    .frame(alignment: .leading)
-//                                Spacer()
-//                            }
-//                        }
-//                    }
-//
-//                }
-//                .refreshable {
-//                    hasRun = false
-////                    print("hello")
-//                    retrieveData()
-////                    print("done")
-//                }
-//                .navigationBarTitle(topicString)
-//            } else {
-                // Fallback on earlier versions
+            VStack {
+                HStack {
+                    Text("Plano")
+                        .font(.title)
+                        .padding(.leading)
+                        .onAppear(perform: {
+                            hasRun += 1
+                            bodies = []
+                            staff = []
+                            jobs = []
+                            retrieveData()
+                            hasRun = 0
+                        })
+                    Spacer()
+                }
                 List(bodies, id: \.name) { staf in
                     Group {
                         VStack {
@@ -73,15 +54,16 @@ struct CrewView: View {
                                 Text(staf.name)
                                     .bold()
                                     .onAppear {
-                                        retrieveData()
+                                        //retrieveData()
                                     }
+                                    .onDisappear(perform: {                                    })
                                     .font(.title)
                                 Spacer()
                             }
                             
                             HStack {
                                 Text(staf.title)
-                                //.foregroundColor(.white)
+                                    //.foregroundColor(.white)
                                     .font(.caption)
                                     .frame(alignment: .leading)
                                 Spacer()
@@ -90,40 +72,45 @@ struct CrewView: View {
                     }
                     
                 }
-                .navigationBarTitle(topicString)
             }
+            
+            .navigationBarTitle(topicString)
+        }
         .navigationViewStyle(StackNavigationViewStyle())
         
-    //    init() {
-    //        UITableView.appearance().separatorStyle = .none
-    //        UITableViewCell.appearance().backgroundColor = .white
-    //        UITableView.appearance().backgroundColor = .white
-    //    }
+        //    init() {
+        //        UITableView.appearance().separatorStyle = .none
+        //        UITableViewCell.appearance().backgroundColor = .white
+        //        UITableView.appearance().backgroundColor = .white
+        //    }
     }
-func retrieveData() {
-    //staff = ["nil"]
-    if hasRun == false {
-        hasRun = true
+    func retrieveData() {
         staff = []
+        jobs = []
         bodies = []
-        db.collection(documentDay).addSnapshotListener { querySnapshot, error in
-            if let e = error {
-                staff = ["error fetching server"]
-                print(e)
-            } else {
-                //staff = ["found documents"]
-                if let snapshotDocuments = querySnapshot?.documents {
-                    //staff = ["got inside"]
-                    for doc in snapshotDocuments {
-                        //staff = ["even farther"]
-                        let data = doc.data()
-                        if let person = data["person"] as? String, let job = data["job"] as? String{
-                            //let count = staff.count
-                            let staffMember = person
-                            staff.append(staffMember)
-                            jobs.append(job)
-                            bodies.append(cellShape(name: staffMember, title: job))
-                            num = 1
+            db.collection(documentDay).addSnapshotListener {
+                querySnapshot, error in
+                if let e = error {
+                    staff = ["error fetching server"]
+                    print(e)
+                } else {
+                    
+                    //staff = ["found documents"]
+                    if let snapshotDocuments = querySnapshot?.documents {
+                        //staff = ["got inside"]
+                        staff = []
+                        jobs = []
+                        bodies = []
+                        for doc in snapshotDocuments {
+                            let data = doc.data()
+                            if let person = data["person"] as? String, let job = data["job"] as? String{
+                                //let count = staff.count
+                                let staffMember = person
+                                staff.append(staffMember)
+                                jobs.append(job)
+                                bodies.append(cellShape(name: staffMember, title: job))
+                                num = 1
+                            }
                         }
                     }
                 }
@@ -133,8 +120,6 @@ func retrieveData() {
         //        staff = ["this error"]
         //    }
     }
-}
-}
 struct CrewView_Previews: PreviewProvider {
     static var previews: some View {
         CrewView()
