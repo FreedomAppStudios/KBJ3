@@ -10,6 +10,11 @@ import Firebase
 struct ContentView: View {
     @State private var selection = 0
     @State var show = false
+    @State var tag1 = 0
+    @State var tag2 = 1
+    @State var tag3 = 4
+    @State var tag4 = 2
+    @State var tag5 = 3
     let db = Firestore.firestore()
     var body: some View {
         TabView(selection: $selection) {
@@ -36,36 +41,43 @@ struct ContentView: View {
                                     }
                                 }
                             }
+                            if show == true {
+                                tag1 = 0
+                                tag2 = 1
+                                tag3 = 2
+                                tag4 = 3
+                            }
                         }
                 }
-//                .tag(0)
+                .tag(tag1)
             MenuView()
                 .tabItem {
                     Label("Menu", systemImage: "list.dash")
                     //.foregroundColor(.black)
                 }
-//                .tag(1)
+                .tag(tag2)
             if show == true {
+                
                 OrderView()
                     .tabItem {
                         Label("Order", systemImage: "cart.fill")
                         //.foregroundColor(.black)
                     }
-//                    .tag(2)
+                    .tag(tag3)
             }
             CrewView()
                 .tabItem {
                     Label("Crew", systemImage: "person.fill")
                     //.foregroundColor(.black)
                 }
-//                .tag(3)
+                .tag(tag4)
             
             DealsView()
                 .tabItem {
                     Label("Deals", systemImage: "dollarsign.square.fill")
                     //.foregroundColor(.black)
                 }
-//                .tag(4)
+                .tag(tag5)
         }
     }
 }
