@@ -17,7 +17,7 @@ struct FoodView: View {
     let buttonHeight: CGFloat = 35
     let buttonWidth: CGFloat = 250
     let item : FoodCell
-    
+    @State var isBurger = false
     let db = Firestore.firestore()
     
     @State var isAccepting = false
@@ -72,114 +72,126 @@ struct FoodView: View {
                     
                     Text("Description")
                         .font(.title2)
+                        .onAppear(perform: {
+                            let burgDet = type == "Burger"
+                            if burgDet == true {
+                                clicked = false
+                                isBurger = true
+                            } else {
+                                clicked = true
+                                cookTemp = "NA"
+                            }
+                        })
                     Text(description)
                 }
                 .padding()
                 
                 Spacer()
                 if isAccepting == true {
-                    ScrollView{
-                        Button(action: {
-                            cookTemp = "Rare"
-                            click()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                    .foregroundColor(.red)
-                                Text("Rare")
-                                    .foregroundColor(.white)
-                                
-                            }
-                        })
-                        Button(action: {
-                            cookTemp = "Medium Rare"
-                            click()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                    .foregroundColor(.red)
-                                Text("Medium Rare")
-                                    .foregroundColor(.white)
-                                
-                            }
-                        })
-                        Button(action: {
-                            cookTemp = "Medium"
-                            click()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                    .foregroundColor(.red)
-                                Text("Medium")
-                                    .foregroundColor(.white)
-                                
-                            }
-                        })
-                        Button(action: {
-                            cookTemp = "Medium Well"
-                            click()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                    .foregroundColor(.red)
-                                Text("Medium Well")
-                                    .foregroundColor(.white)
-                                
-                            }
-                        })
-                        Button(action: {
-                            cookTemp = "Well Done"
-                            click()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                    .foregroundColor(.red)
-                                Text("Well Done")
-                                    .foregroundColor(.white)
-                                
-                            }
-                        })
-                        
-                        //Spacer
-                        RoundedRectangle(cornerRadius: 25.0)
-                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                            .opacity(0.0)
-                        
-                        if clicked == true {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: 300, height: 30, alignment: .center)
-                                    .luminanceToAlpha()
-                                Button(action: {
-                                    foodOrdered.append(OrderItem(item: item, temp: cookTemp))
-                                    timeRemaining = 2
-                                }, label: {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 25.0)
-                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        Text("Add to Order")
-                                            .foregroundColor(.white)
-                                            .onReceive(timer) { _ in
-                                                if timeRemaining > 1 {
-                                                    toShow()
-                                                    timeRemaining -= 1
-                                                }
-                                                else {
-                                                    showed()
-                                                    timeRemaining = 0
-                                                }
-                                            }
-                                        
-                                    }
-                                })
-                            }
+                    if isBurger == true {
+                        ScrollView{
+                            Button(action: {
+                                cookTemp = "Rare"
+                                click()
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Rare")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            Button(action: {
+                                cookTemp = "Medium Rare"
+                                click()
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Medium Rare")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            Button(action: {
+                                cookTemp = "Medium"
+                                click()
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Medium")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            Button(action: {
+                                cookTemp = "Medium Well"
+                                click()
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Medium Well")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            Button(action: {
+                                cookTemp = "Well Done"
+                                click()
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Well Done")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            
+                            //Spacer
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                .opacity(0.0)
                         }
                     }
+                    if clicked == true {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .frame(width: 300, height: 30, alignment: .center)
+                                .luminanceToAlpha()
+                            Button(action: {
+                                foodOrdered.append(OrderItem(item: item, temp: cookTemp))
+                                timeRemaining = 2
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                    Text("Add to Order")
+                                        .foregroundColor(.white)
+                                        .onReceive(timer) { _ in
+                                            if timeRemaining > 1 {
+                                                toShow()
+                                                timeRemaining -= 1
+                                            }
+                                            else {
+                                                showed()
+                                                timeRemaining = 0
+                                            }
+                                        }
+                                    
+                                }
+                            })
+                        }
+                    }
+                    
                 }
                 Spacer()
             }

@@ -24,6 +24,8 @@ struct OrderView: View {
     @State var rotate = 0
     @State var lastPlace = 0
     @State var new = 0
+    let buttonWidth: CGFloat = 175
+    let buttonHeight: CGFloat = 45
     let db = Firestore.firestore()
     var body: some View {
         NavigationView {
@@ -78,17 +80,30 @@ struct OrderView: View {
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25)
-                                    .frame(width: 300, height: 45, alignment: .center)
+                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
                                 Text("Place Order")
                                     .foregroundColor(.white)
                                 
+                            }
+                            Button {
+                                message = "Nothing Ordered"
+                                foodOrdered = []
+                                orderedItems = []
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                    Text("Clear Order")
+                                        .foregroundColor(.white)
+                                    
+                                }
                             }
                         }
                         Spacer()
                         RoundedRectangle(cornerRadius: 25.0)
                             .opacity(0)
                             .frame(width: 100, height: 75, alignment: .center)
-                        .navigationTitle("Order")
+                            .navigationTitle("Order")
                     }
                 }
                 
@@ -128,6 +143,7 @@ extension Double {
 func placeOrder(order : Array<OrderItem>) {
     var simList = [SimpleOrder]()
     var fullOrder = "Name: ____ \n"
+    let timeStamp = Date().timeIntervalSince1970
     for item in order {
         let foodName = "Item: " + String(item.item.foodName)
         let cookTemp = "Temp: " + String(item.temp)
@@ -138,7 +154,8 @@ func placeOrder(order : Array<OrderItem>) {
         fullOrder.append("\nTemp: \(order.temp)\n")
     }
     db.collection("z-orders").addDocument(data: [
-        "order" : fullOrder
+        "order" : fullOrder,
+        "time" : timeStamp
     ])
 }
 
