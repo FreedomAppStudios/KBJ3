@@ -18,6 +18,9 @@ struct FoodView: View {
     let buttonWidth: CGFloat = 250
     let item : FoodCell
     @State var isBurger = false
+    @State var cheese = "NA"
+    @State var isRoyal = false
+    @State var click2 = false
     let db = Firestore.firestore()
     
     @State var isAccepting = false
@@ -71,7 +74,9 @@ struct FoodView: View {
                     Divider()
                     
                     Text("Description")
-                        .font(.title2)
+                        .bold()
+                        .padding(.leading)
+                        .font(.title)
                         .onAppear(perform: {
                             let burgDet = type == "Burger"
                             if burgDet == true {
@@ -81,15 +86,25 @@ struct FoodView: View {
                                 clicked = true
                                 cookTemp = "NA"
                             }
+                            let cheeseDet = name == "Royal w/ Cheese"
+                            if cheeseDet == true {
+                                isRoyal = true
+                            } else {
+                                clicked = true
+                                cookTemp = "NA"
+                            }
                         })
                     Text(description)
+                        .italic()
+                        .padding()
+                        .font(.headline)
                 }
                 .padding()
-                
                 Spacer()
                 if isAccepting == true {
                     if isBurger == true {
                         ScrollView{
+                            Text("Temperature")
                             Button(action: {
                                 cookTemp = "Rare"
                                 click()
@@ -160,15 +175,81 @@ struct FoodView: View {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
                                 .opacity(0.0)
+                            //if Royal
+                            if click2 == true {
+                            if isRoyal == true {
+                                Text("Cheese")
+                                    Button(action: {
+                                        cheese = "Yellow Cheddar"
+                                        click2func()
+                                    }, label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 25.0)
+                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .foregroundColor(.red)
+                                            Text("Yellow Cheddar")
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    })
+                                    Button(action: {
+                                        cheese = "Pepper Jack"
+                                        click2func()
+                                    }, label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 25.0)
+                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .foregroundColor(.red)
+                                            Text("Pepper Jack")
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    })
+                                    Button(action: {
+                                        cheese = "White American"
+                                        click2func()
+                                    }, label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 25.0)
+                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .foregroundColor(.red)
+                                            Text("White American")
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    })
+                                    Button(action: {
+                                        cheese = "Swiss"
+                                        click2func()
+                                    }, label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 25.0)
+                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .foregroundColor(.red)
+                                            Text("Swiss")
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    })
+                                    
+                                    //Spacer
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .opacity(0.0)
+                            }
+                            }
                         }
                     }
+                    
+                    
+                    
                     if clicked == true {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .frame(width: 300, height: 30, alignment: .center)
                                 .luminanceToAlpha()
                             Button(action: {
-                                foodOrdered.append(OrderItem(item: item, temp: cookTemp))
+                                foodOrdered.append(OrderItem(item: item, temp: cookTemp, cheese: cheese))
                                 timeRemaining = 2
                             }, label: {
                                 ZStack {
@@ -214,7 +295,12 @@ struct FoodView: View {
     }
     func click() {
         withAnimation{
-            clicked.toggle()
+            click2 = true
+        }
+    }
+    func click2func() {
+        withAnimation{
+            clicked = true
         }
     }
     func toShow() {
@@ -230,8 +316,13 @@ struct FoodView: View {
 }
 struct FoodView_Previews: PreviewProvider {
     static var previews: some View {
-        let food = FoodCell(foodName: "Zed's", toppings: "L,T,O,P, M", image: "fry chicken", price: "$8.99", type: "Chicken")
-        FoodView(name: "Zed's", type: "Burger", description: "L,T,O,P, M", price: "$8.99", image: "fry chicken", item: food)
+        let food = FoodCell(
+            foodName: "Royal w/ Cheese",
+            toppings: "Lettuce, Tomato, Onion, Pickles, Mayo, with Cheddar, American, Swiss or Pepperjack",
+            image: "royal",
+            price: "$8.99",
+            type: "Burger")
+        FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)
     }
 }
 struct ItemView: View {

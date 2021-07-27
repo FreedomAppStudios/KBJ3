@@ -76,6 +76,7 @@ struct FoodCell {
 struct OrderItem: Identifiable {
     let item: FoodCell
     let temp: String
+    let cheese: String
     let id = UUID()
 }
 struct SimpleOrder: Identifiable {
@@ -100,7 +101,7 @@ struct Order {
 }
 let foodBurgers = [
     FoodCell(foodName: "Zed's Straight Up", toppings: "Lettuce, Tomato, Onion, Pickle, Mayo", image: "zeds", price: "$7.99", type: "Burger"),
-    FoodCell(foodName: "Royal w/ Cheese", toppings: "Lettuce, Tomato, Onion, Pickles, Maya, with Cheddar, American, Swiss or Pepperjack", image: "royal", price: "$8.99", type: "Burger"),
+    FoodCell(foodName: "Royal w/ Cheese", toppings: "Lettuce, Tomato, Onion, Pickles, Mayo, with Cheddar, American, Swiss or Pepperjack", image: "royal", price: "$8.99", type: "Burger"),
     FoodCell(foodName: "Juicy Lucy", toppings: "Mustard, Ketchup, Onions, Pickles, Stuffed w/ White American", image: "jl", price: "$8.99", type: "Burger"),
     FoodCell(foodName: "Patty Melt", toppings: "Sourdough, sautéed onions, swiss, secret sauce", image: "patty", price: "$8.99", type: "Burger"),
     FoodCell(foodName: "Black & Blue", toppings: "Cajun spiced, blue cheese & dressing, Lettuce, Tomato, Onion", image: "b&b", price: "$8.99", type: "Burger"),

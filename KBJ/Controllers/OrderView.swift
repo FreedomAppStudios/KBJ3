@@ -87,6 +87,10 @@ struct OrderView: View {
                                         Text(thing.temp)
                                             .font(.caption)
                                             .italic()
+                                        Text(" - ")
+                                        Text(thing.cheese)
+                                            .font(.caption)
+                                            .italic()
                                         Spacer()
                                     }
                                 }
