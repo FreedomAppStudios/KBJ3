@@ -62,11 +62,14 @@ struct FoodView: View {
                     }
                     Text(name)
                         .font(.title)
+                        .padding(.leading)
                     
                     HStack {
                         Text(type)
+                            .padding(.leading)
                         Spacer()
                         Text(price)
+                            .padding(.trailing)
                     }
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -94,10 +97,16 @@ struct FoodView: View {
                                 cookTemp = "NA"
                             }
                         })
-                    Text(description)
-                        .italic()
-                        .padding()
-                        .font(.headline)
+                        Text(description)
+                            .italic()
+                            //.font(.headline)
+                            .padding(.leading)
+                            .frame(width: 400, height: 100, alignment: .leading)  // <--- here
+                                        .allowsTightening(true)
+                                        .lineLimit(2)
+                                        .scaledToFit()
+                                        .minimumScaleFactor(0.7)
+                    
                 }
                 .padding()
                 Spacer()
@@ -172,9 +181,9 @@ struct FoodView: View {
                             })
                             
                             //Spacer
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                .opacity(0.0)
+//                            RoundedRectangle(cornerRadius: 25.0)
+//                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+//                                .opacity(0.0)
                             //if Royal
                             if click2 == true {
                             if isRoyal == true {
@@ -257,6 +266,7 @@ struct FoodView: View {
                                         .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
                                     Text("Add to Order")
                                         .foregroundColor(.white)
+                                        
                                         .onReceive(timer) { _ in
                                             if timeRemaining > 1 {
                                                 toShow()
@@ -269,6 +279,7 @@ struct FoodView: View {
                                         }
                                     
                                 }
+                                .padding()
                             })
                         }
                     }

@@ -58,14 +58,17 @@ struct OrderView: View {
                         HStack {
                             Text("Phone Number: ")
                             iPhoneNumberField("Phone Number", text: $phoneNumber)
+                                .padding(.leading)
                         }
                         HStack {
                             Text("First Name: ")
                             TextField("First Name", text: $firstName)
+                                .padding(.leading)
                         }
                         HStack {
                             Text("Last Name: ")
                             TextField("Last Name", text: $lastName)
+                                .padding(.leading)
                         }
                         
                         Divider()
