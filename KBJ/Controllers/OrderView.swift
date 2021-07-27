@@ -17,6 +17,9 @@ struct OrderView: View {
     @State var hasRun = false
     @State var refreshed = false
     @State var sum = 0.0
+    @State var firstName = ""
+    @State var lastName = ""
+    @State var phoneNumber = ""
     @State var cookMessage = "R"
     let degreesOfDoneness = ["R", "MR", "M", "MW", "WD",""]
     @State var allTemps = [Int]()
@@ -50,6 +53,12 @@ struct OrderView: View {
             } else {
                 ZStack {
                     VStack {
+                        HStack {
+                            TextField("First Name", text: $firstName)
+                            TextField("Last Name", text: $lastName)
+                        }
+                        TextField("Phone Number", text: $phoneNumber)
+                        
                         List(orderedItems, id: \.id) { thing in
                             HStack {
                                 let item = thing.item
@@ -73,10 +82,20 @@ struct OrderView: View {
                             }
                         }
                         Button {
-                            placeOrder(order: orderedItems)
-                            message = "Order Placed!"
-                            foodOrdered = []
-                            orderedItems = []
+                            let isEmptyFirst = firstName == ""
+                            let isEmptyLast = lastName == ""
+                            let isEmptyPhone = phoneNumber == ""
+                            if isEmptyFirst == false {
+                                if isEmptyLast == false {
+                                    if isEmptyPhone == false {
+                                        placeOrder(order: orderedItems, first: firstName, last: lastName, phone: phoneNumber)
+                                        message = "Order Placed!"
+                                        foodOrdered = []
+                                        orderedItems = []
+                                    }
+                                }
+                            }
+                            
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25)
@@ -140,9 +159,9 @@ extension Double {
     }
 }
 
-func placeOrder(order : Array<OrderItem>) {
+func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: String) {
     var simList = [SimpleOrder]()
-    var fullOrder = "Name: ____ \n"
+    var fullOrder = "Name: \(first + " " + last) \nPhone Number: \(phone)\n"
     let timeStamp = Date().timeIntervalSince1970
     for item in order {
         let foodName = "Item: " + String(item.item.foodName)
@@ -158,6 +177,7 @@ func placeOrder(order : Array<OrderItem>) {
         "time" : timeStamp
     ])
 }
+
 
 //                                Button (action:{
 //                                    var price = item.price
