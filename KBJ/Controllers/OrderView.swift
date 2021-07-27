@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import iPhoneNumberField
+
 var itemNumber = 0
 struct OrderView: View {
     @State var show = false
@@ -54,21 +56,40 @@ struct OrderView: View {
                 ZStack {
                     VStack {
                         HStack {
+                            Text("Phone Number: ")
+                            iPhoneNumberField("Phone Number", text: $phoneNumber)
+                        }
+                        HStack {
+                            Text("First Name: ")
                             TextField("First Name", text: $firstName)
+                        }
+                        HStack {
+                            Text("Last Name: ")
                             TextField("Last Name", text: $lastName)
                         }
-                        TextField("Phone Number", text: $phoneNumber)
                         
+                        Divider()
                         List(orderedItems, id: \.id) { thing in
                             HStack {
                                 let item = thing.item
-                                Text(item.foodName)
-                                    .bold()
-                                    .font(.title2)
-                                    .onAppear(perform: {
-                                        orderedItems.append(contentsOf: foodOrdered)
-                                        foodOrdered = []
-                                    })
+                                VStack {
+                                    HStack {
+                                        Text(item.foodName)
+                                            .bold()
+                                            .font(.title2)
+                                            .onAppear(perform: {
+                                                orderedItems.append(contentsOf: foodOrdered)
+                                                foodOrdered = []
+                                        })
+                                        Spacer()
+                                    }
+                                    HStack {
+                                        Text(thing.temp)
+                                            .font(.caption)
+                                            .italic()
+                                        Spacer()
+                                    }
+                                }
                                 Spacer()
                                 Text(item.price)
                                     .bold()
@@ -80,6 +101,9 @@ struct OrderView: View {
                                     })
                                 
                             }
+                            .onTapGesture(perform: {
+                                hideKeyboard()
+                            })
                         }
                         Button {
                             let isEmptyFirst = firstName == ""
@@ -174,7 +198,8 @@ func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: St
     }
     db.collection("z-orders").addDocument(data: [
         "order" : fullOrder,
-        "time" : timeStamp
+        "time" : timeStamp,
+        "name" : first + " " + last
     ])
 }
 
@@ -204,3 +229,10 @@ func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: St
 //                                    Image(systemName: "info.circle.fill")
 //                                        .foregroundColor(.white)
 //                                }
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
