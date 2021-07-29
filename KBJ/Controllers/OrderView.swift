@@ -31,8 +31,10 @@ struct OrderView: View {
     @State var new = 0
     let buttonWidth: CGFloat = 175
     let buttonHeight: CGFloat = 45
+    
     let db = Firestore.firestore()
     var body: some View {
+        
         NavigationView {
             
             if orderedItems.count == 0 {
@@ -119,7 +121,11 @@ struct OrderView: View {
                             if isEmptyFirst == false {
                                 if isEmptyLast == false {
                                     if isEmptyPhone == false {
-                                        placeOrder(order: orderedItems, first: firstName, last: lastName, phone: phoneNumber)
+                                        placeOrder(
+                                            order: orderedItems,
+                                            first: firstName,
+                                            last: lastName,
+                                            phone: phoneNumber)
                                         message = "Order Placed!"
                                         foodOrdered = []
                                         orderedItems = []
@@ -191,6 +197,22 @@ extension Double {
 }
 
 func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: String) {
+    let date = Date()
+    let calendar = Calendar.current
+    var hour = calendar.component(.hour, from: date)
+    let minutes = calendar.component(.minute, from: date)
+    var minutes2 = ""
+    if hour > 12 {
+        hour = hour - 12
+    }
+    if minutes < 10 {
+        minutes2 = "0" + String(minutes)
+    }
+    else {
+        minutes2 = String(minutes)
+    }
+    let givenTime = String(hour) + ":" + String(minutes2)
+    
     var simList = [SimpleOrder]()
     var fullOrder = "Name: \(first + " " + last) \nPhone Number: \(phone)\n"
     let timeStamp = Date().timeIntervalSince1970
@@ -206,7 +228,8 @@ func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: St
     db.collection("z-orders").addDocument(data: [
         "order" : fullOrder,
         "time" : timeStamp,
-        "name" : first + " " + last
+        "name" : first + " " + last,
+        "realTime" : givenTime
     ])
 }
 
