@@ -200,8 +200,8 @@ func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: St
         simList.append(SimpleOrder(name: foodName, temp: cookTemp))
     }
     for order in simList {
-        fullOrder.append("\nItem: \(order.name)")
-        fullOrder.append("\nTemp: \(order.temp)\n")
+        fullOrder.append("\n\(order.name)")
+        fullOrder.append("\n\(order.temp)\n")
     }
     db.collection("z-orders").addDocument(data: [
         "order" : fullOrder,
