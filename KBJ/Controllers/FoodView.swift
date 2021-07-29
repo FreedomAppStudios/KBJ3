@@ -15,7 +15,8 @@ struct FoodView: View {
     let price: String
     let image: String
     let buttonHeight: CGFloat = 35
-    let buttonWidth: CGFloat = 250
+    let buttonWidth: CGFloat = 120
+    let buttonWidthCheese: CGFloat = 150
     let item : FoodCell
     @State var isBurger = false
     @State var cheese = "NA"
@@ -93,7 +94,7 @@ struct FoodView: View {
                             if cheeseDet == true {
                                 isRoyal = true
                             } else {
-                                clicked = true
+                                click2 = true
                                 cookTemp = "NA"
                             }
                         })
@@ -101,7 +102,7 @@ struct FoodView: View {
                             .italic()
                             //.font(.headline)
                             .padding(.leading)
-                            .frame(width: 400, height: 100, alignment: .leading)  // <--- here
+                            .frame(width: 400, height: 50, alignment: .leading)  // <--- here
                                         .allowsTightening(true)
                                         .lineLimit(2)
                                         .scaledToFit()
@@ -114,71 +115,91 @@ struct FoodView: View {
                     if isBurger == true {
                         ScrollView{
                             Text("Temperature")
-                            Button(action: {
-                                cookTemp = "Rare"
-                                click()
-                            }, label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        .foregroundColor(.red)
-                                    Text("Rare")
-                                        .foregroundColor(.white)
-                                    
-                                }
-                            })
-                            Button(action: {
-                                cookTemp = "Medium Rare"
-                                click()
-                            }, label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        .foregroundColor(.red)
-                                    Text("Medium Rare")
-                                        .foregroundColor(.white)
-                                    
-                                }
-                            })
-                            Button(action: {
-                                cookTemp = "Medium"
-                                click()
-                            }, label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        .foregroundColor(.red)
-                                    Text("Medium")
-                                        .foregroundColor(.white)
-                                    
-                                }
-                            })
-                            Button(action: {
-                                cookTemp = "Medium Well"
-                                click()
-                            }, label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        .foregroundColor(.red)
-                                    Text("Medium Well")
-                                        .foregroundColor(.white)
-                                    
-                                }
-                            })
-                            Button(action: {
-                                cookTemp = "Well Done"
-                                click()
-                            }, label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                        .foregroundColor(.red)
-                                    Text("Well Done")
-                                        .foregroundColor(.white)
-                                    
-                                }
-                            })
+                            HStack {
+                                Button(action: {
+                                    cookTemp = "Rare"
+                                    click()
+                                    if isRoyal != true {
+                                        click2func()
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25.0)
+                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                            .foregroundColor(.red)
+                                        Text("Rare")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                })
+                                Button(action: {
+                                    cookTemp = "Medium Rare"
+                                    click()
+                                    if isRoyal != true {
+                                        click2func()
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25.0)
+                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                            .foregroundColor(.red)
+                                        Text("Medium Rare")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                })
+                            }
+                            HStack {
+                                Button(action: {
+                                    cookTemp = "Medium"
+                                    click()
+                                    if isRoyal != true {
+                                        click2func()
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25.0)
+                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                            .foregroundColor(.red)
+                                        Text("Medium")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                })
+                                Button(action: {
+                                    cookTemp = "Medium Well"
+                                    click()
+                                    if isRoyal != true {
+                                        click2func()
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25.0)
+                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                            .foregroundColor(.red)
+                                        Text("Medium Well")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                })
+                                Button(action: {
+                                    cookTemp = "Well Done"
+                                    click()
+                                    if isRoyal != true {
+                                        click2func()
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25.0)
+                                            .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                            .foregroundColor(.red)
+                                        Text("Well Done")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                })
+                            }
+                            
                             
                             //Spacer
 //                            RoundedRectangle(cornerRadius: 25.0)
@@ -188,39 +209,42 @@ struct FoodView: View {
                             if click2 == true {
                             if isRoyal == true {
                                 Text("Cheese")
-                                    Button(action: {
-                                        cheese = "Yellow Cheddar"
-                                        click2func()
-                                    }, label: {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 25.0)
-                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                                .foregroundColor(.red)
-                                            Text("Yellow Cheddar")
-                                                .foregroundColor(.white)
-                                            
-                                        }
-                                    })
-                                    Button(action: {
-                                        cheese = "Pepper Jack"
-                                        click2func()
-                                    }, label: {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 25.0)
-                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
-                                                .foregroundColor(.red)
-                                            Text("Pepper Jack")
-                                                .foregroundColor(.white)
-                                            
-                                        }
-                                    })
+                                HStack {
+                                        Button(action: {
+                                            cheese = "Yellow Cheddar"
+                                            click2func()
+                                        }, label: {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 25.0)
+                                                    .frame(width: buttonWidthCheese, height: buttonHeight, alignment: .center)
+                                                    .foregroundColor(.red)
+                                                Text("Yellow Cheddar")
+                                                    .foregroundColor(.white)
+                                                
+                                            }
+                                        })
+                                        Button(action: {
+                                            cheese = "Pepper Jack"
+                                            click2func()
+                                        }, label: {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 25.0)
+                                                    .frame(width: buttonWidthCheese, height: buttonHeight, alignment: .center)
+                                                    .foregroundColor(.red)
+                                                Text("Pepper Jack")
+                                                    .foregroundColor(.white)
+                                                
+                                            }
+                                        })
+                                }
+                                HStack {
                                     Button(action: {
                                         cheese = "White American"
                                         click2func()
                                     }, label: {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 25.0)
-                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .frame(width: buttonWidthCheese, height: buttonHeight, alignment: .center)
                                                 .foregroundColor(.red)
                                             Text("White American")
                                                 .foregroundColor(.white)
@@ -233,17 +257,19 @@ struct FoodView: View {
                                     }, label: {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 25.0)
-                                                .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                                .frame(width: buttonWidthCheese, height: buttonHeight, alignment: .center)
                                                 .foregroundColor(.red)
                                             Text("Swiss")
                                                 .foregroundColor(.white)
                                             
                                         }
                                     })
+                                }
+                                    
                                     
                                     //Spacer
                                     RoundedRectangle(cornerRadius: 25.0)
-                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .frame(width: buttonWidthCheese, height: buttonHeight, alignment: .center)
                                         .opacity(0.0)
                             }
                             }
@@ -329,7 +355,7 @@ struct FoodView_Previews: PreviewProvider {
     static var previews: some View {
         let food = FoodCell(
             foodName: "Royal w/ Cheese",
-            toppings: "Lettuce, Tomato, Onion, Pickles, Mayo, with Cheddar, American, Swiss or Pepperjack",
+            toppings: "Lettuce, Tomato, Onion, Pickles",
             image: "royal",
             price: "$8.99",
             type: "Burger")
