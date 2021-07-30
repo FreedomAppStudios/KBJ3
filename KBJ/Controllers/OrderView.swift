@@ -98,6 +98,10 @@ struct OrderView: View {
                                             .italic()
                                         Spacer()
                                     }
+                                    HStack {
+                                        Text(thing.modifications)
+                                        Spacer()
+                                    }
                                 }
                                 Spacer()
                                 Text(item.price)
@@ -219,11 +223,13 @@ func placeOrder(order : Array<OrderItem>, first: String, last: String, phone: St
     for item in order {
         let foodName = "Item: " + String(item.item.foodName)
         let cookTemp = "Temp: " + String(item.temp)
-        simList.append(SimpleOrder(name: foodName, temp: cookTemp))
+        let extra = "Modifications: " + String(item.modifications)
+        simList.append(SimpleOrder(name: foodName, temp: cookTemp, special: extra))
     }
     for order in simList {
         fullOrder.append("\n\(order.name)")
-        fullOrder.append("\n\(order.temp)\n")
+        fullOrder.append("\n\(order.temp)")
+        fullOrder.append("\n\(order.special)\n")
     }
     db.collection("z-orders").addDocument(data: [
         "order" : fullOrder,

@@ -22,6 +22,7 @@ struct FoodView: View {
     @State var cheese = "NA"
     @State var isRoyal = false
     @State var click2 = false
+    @State var extra = ""
     let db = Firestore.firestore()
     
     @State var isAccepting = false
@@ -110,6 +111,8 @@ struct FoodView: View {
                     
                 }
                 .padding()
+                TextField("Modify", text: $extra)
+                    .padding(.leading, 40)
                 Spacer()
                 if isAccepting == true {
                     if isBurger == true {
@@ -284,7 +287,11 @@ struct FoodView: View {
                                 .frame(width: 300, height: 30, alignment: .center)
                                 .luminanceToAlpha()
                             Button(action: {
-                                foodOrdered.append(OrderItem(item: item, temp: cookTemp, cheese: cheese))
+                                let test = extra == ""
+                                if test == true {
+                                    extra = "No Modifications"
+                                }
+                                foodOrdered.append(OrderItem(item: item, temp: cookTemp, cheese: cheese, modifications: extra))
                                 timeRemaining = 2
                             }, label: {
                                 ZStack {

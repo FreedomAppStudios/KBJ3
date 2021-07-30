@@ -77,11 +77,13 @@ struct OrderItem: Identifiable {
     let item: FoodCell
     let temp: String
     let cheese: String
+    let modifications: String
     let id = UUID()
 }
 struct SimpleOrder: Identifiable {
     let name: String
     let temp: String
+    let special: String
     let id = UUID()
 }
 struct Order {
