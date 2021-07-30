@@ -6,26 +6,58 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct MenuView: View {
+    @State var urlFire = "https://i.ytimg.com/vi/lcQvkhNXoNU/maxresdefault.jpg"
+    @State var name = ""
+    @State var type = ""
+    @State var description = ""
+    @State var price = ""
+    let db = Firestore.firestore()
     var body: some View {
         NavigationView {
             let frameHeight: CGFloat = 135.0
             ScrollView(.vertical, showsIndicators: false) {
-                let name = "Nashville Chicken Tacos"
-                let type = "Taco"
-                let description = "Tortilla, Chicken, Slaw"
-                let price = "$12.99"
-                let image = "Nashville"
-                NavigationLink(destination: FoodView(name: name, type: type, description: description, price: price, image: image, item: FoodCell(foodName: name, toppings: description, image: image, price: price, type: type))) {
-                    Image(image)
+                Text("")
+                    .onAppear() {
+                        db.collection("z-special").addSnapshotListener {
+                            querySnapshot, error in
+                            if let e = error {
+                                name = "error fetching server"
+                                print(e)
+                            } else {
+                                
+                                //staff = ["found documents"]
+                                if let snapshotDocuments = querySnapshot?.documents {
+                                    //staff = ["got inside"]
+                                    for doc in snapshotDocuments {
+                                        let data = doc.data()
+                                        if let n = data["name"] as? String,
+                                           let d = data["description"] as? String,
+                                           let i = data["image"] as? String,
+                                           let p = data["price"] as? String,
+                                           let t = data["type"] as? String {
+                                            urlFire = i
+                                            name = n
+                                            type = t
+                                            description = d
+                                            price = p
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                NavigationLink(destination: FoodView(name: name, type: type, description: description, price: price, image: urlFire, item: FoodCell(foodName: name, toppings: description, image: urlFire, price: price, type: type))) {
+                    Image("wifi")
+                        .data(url: URL(string: urlFire)!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 350, height: 200)
                         .clipped()
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
-                
                 HStack {
                     Text("Special")
                         .font(.subheadline)
@@ -45,7 +77,7 @@ struct MenuView: View {
                         .font(.headline)
                         .padding(.leading, 15)
                         .padding(.top, 5)
-                        
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .top, spacing: 0) {
                             ForEach(foodFries, id: \.foodName) { food in
@@ -122,58 +154,65 @@ struct MenuView: View {
                     
                 }
                 
+                .navigationBarTitle("Menu")
             }
-            
-            .navigationBarTitle("Menu")
+            //        .navigationViewStyle(StackNavigationViewStyle())
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-//        .navigationViewStyle(StackNavigationViewStyle())
-        .navigationViewStyle(StackNavigationViewStyle())
+        //List Menu
+        //        NavigationView {
+        //            List(foodItemList, id: \.foodName) { food in
+        //                HStack {
+        //                    VStack {
+        //                        HStack {
+        //                            Text(food.foodName)
+        //                                .font(.title)
+        //                                .bold()
+        //                            Spacer()
+        //                        }
+        //                        HStack {
+        //                            Text(food.toppings)
+        //                                .font(.caption)
+        //                                .frame(alignment: .leading)
+        //                            Spacer()
+        //
+        //                        }
+        //                    }
+        //                    Text(food.price)
+        //                        .font(.headline)
+        //                    //            Image(image)
+        //                    //                .resizable()
+        //                    //                .aspectRatio(contentMode: .fill)
+        //                    //                .frame(width: 60, height: 60, alignment: .leading)
+        //                    //                    Button (action:{
+        //                    //                        foodOrdered.append(Order(foodName: food.foodName, price: food.price, place: index, type: food.image))
+        //                    //                        index+=1
+        //                    //                    }) {
+        //                    //                        Image(systemName: "plus.square.fill")
+        //                    //                    }
+        //                }
+        //            }
+        //            .navigationBarTitle("Menu")
+        //        }
+        //        .navigationViewStyle(StackNavigationViewStyle())
+        //    }
     }
-    //List Menu
-    //        NavigationView {
-    //            List(foodItemList, id: \.foodName) { food in
-    //                HStack {
-    //                    VStack {
-    //                        HStack {
-    //                            Text(food.foodName)
-    //                                .font(.title)
-    //                                .bold()
-    //                            Spacer()
-    //                        }
-    //                        HStack {
-    //                            Text(food.toppings)
-    //                                .font(.caption)
-    //                                .frame(alignment: .leading)
-    //                            Spacer()
-    //
-    //                        }
-    //                    }
-    //                    Text(food.price)
-    //                        .font(.headline)
-    //                    //            Image(image)
-    //                    //                .resizable()
-    //                    //                .aspectRatio(contentMode: .fill)
-    //                    //                .frame(width: 60, height: 60, alignment: .leading)
-    //                    //                    Button (action:{
-    //                    //                        foodOrdered.append(Order(foodName: food.foodName, price: food.price, place: index, type: food.image))
-    //                    //                        index+=1
-    //                    //                    }) {
-    //                    //                        Image(systemName: "plus.square.fill")
-    //                    //                    }
-    //                }
-    //            }
-    //            .navigationBarTitle("Menu")
-    //        }
-    //        .navigationViewStyle(StackNavigationViewStyle())
-    //    }
 }
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MenuView()
             MenuView()
         }
         //.preferredColorScheme(.light)
     }
 }
 
+extension Image {
+    func data(url: URL) -> Self {
+        if let data = try? Data(contentsOf: url) {
+            return Image(uiImage: UIImage(data: data)!)
+                .resizable()
+        }
+        return self.resizable()
+    }
+}

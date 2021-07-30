@@ -163,7 +163,7 @@ struct OrderView: View {
                         RoundedRectangle(cornerRadius: 25.0)
                             .opacity(0)
                             .frame(width: 100, height: 75, alignment: .center)
-                            .navigationTitle("Order")
+                            
                     }
                 }
                 
@@ -171,8 +171,9 @@ struct OrderView: View {
             }
         }
         .navigationTitle("Order")
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+    
 }
 
 struct OrderView_Previews: PreviewProvider {
