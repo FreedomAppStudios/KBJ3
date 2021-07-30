@@ -373,6 +373,7 @@ struct ItemView: View {
     let pic : String
     var body: some View {
         Image(pic)
+            .data(url: URL(string: pic)!)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 350, height: 200)
