@@ -23,6 +23,7 @@ struct FoodView: View {
     @State var isRoyal = false
     @State var click2 = false
     @State var extra = ""
+    @State var salad = false
     let db = Firestore.firestore()
     
     @State var isAccepting = false
@@ -98,6 +99,10 @@ struct FoodView: View {
                                 click2 = true
                                 cookTemp = "NA"
                             }
+                            let saladDet = type == "Salad"
+                            if saladDet == true {
+                                salad = true
+                            }
                         })
                         Text(description)
                             .italic()
@@ -115,9 +120,54 @@ struct FoodView: View {
                     .padding(.leading, 40)
                 Spacer()
                 if isAccepting == true {
-                    if isBurger == true {
-                        ScrollView{
-                            Text("Temperature")
+                    ScrollView{
+                    if salad == true {
+                        Text("Add")
+                        HStack {
+                            Button(action: {
+                                extra = "Add Burger"
+                                isBurger = true
+                                clicked = false
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Burger")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                            Button(action: {
+                                extra = "Add Tuna"
+                                isBurger = true
+                                clicked = false
+                            }, label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25.0)
+                                        .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                        .foregroundColor(.red)
+                                    Text("Tuna")
+                                        .foregroundColor(.white)
+                                    
+                                }
+                            })
+                        }
+                        Button(action: {
+                            extra = "Add Chicken"
+                        }, label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 25.0)
+                                    .frame(width: buttonWidth, height: buttonHeight, alignment: .center)
+                                    .foregroundColor(.red)
+                                Text("Chicken")
+                                    .foregroundColor(.white)
+                                
+                            }
+                        })
+                    }
+                        if isBurger == true {
+                            Text("Temperture")
                             HStack {
                                 Button(action: {
                                     cookTemp = "Rare"
@@ -365,7 +415,7 @@ struct FoodView_Previews: PreviewProvider {
             toppings: "Lettuce, Tomato, Onion, Pickles",
             image: "royal",
             price: "$8.99",
-            type: "Burger")
+            type: "Salad")
         FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)
     }
 }

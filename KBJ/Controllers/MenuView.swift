@@ -156,9 +156,8 @@ struct MenuView: View {
                 
                 .navigationBarTitle("Menu")
             }
-            //        .navigationViewStyle(StackNavigationViewStyle())
-            .navigationViewStyle(StackNavigationViewStyle())
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         //List Menu
         //        NavigationView {
         //            List(foodItemList, id: \.foodName) { food in
