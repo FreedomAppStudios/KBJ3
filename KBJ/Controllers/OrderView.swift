@@ -59,18 +59,19 @@ struct OrderView: View {
                     VStack {
                         HStack {
                             Text("Phone Number: ")
+                                .padding(.leading, 40)
                             iPhoneNumberField("Phone Number", text: $phoneNumber)
-                                .padding(.leading)
+                                
                         }
                         HStack {
                             Text("First Name: ")
+                                .padding(.leading, 40)
                             TextField("First Name", text: $firstName)
-                                .padding(.leading)
                         }
                         HStack {
                             Text("Last Name: ")
+                                .padding(.leading, 40)
                             TextField("Last Name", text: $lastName)
-                                .padding(.leading)
                         }
                         
                         Divider()
@@ -118,6 +119,7 @@ struct OrderView: View {
                                 hideKeyboard()
                             })
                         }
+                        .listStyle(InsetGroupedListStyle())
                         Button {
                             let isEmptyFirst = firstName == ""
                             let isEmptyLast = lastName == ""
@@ -167,10 +169,9 @@ struct OrderView: View {
                     }
                 }
                 
-                
+                .navigationTitle("Order")
             }
         }
-        .navigationTitle("Order")
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
