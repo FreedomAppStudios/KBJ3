@@ -116,10 +116,11 @@ struct FoodView: View {
                     
                 }
                 .padding()
-                TextField("Modify", text: $extra)
-                    .padding(.leading, 40)
-                Spacer()
+                
                 if isAccepting == true {
+                    TextField("Modify", text: $extra)
+                        .padding(.leading, 40)
+                    Spacer()
                     ScrollView{
                     if salad == true {
                         Text("Add")
