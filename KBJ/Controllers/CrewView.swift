@@ -36,63 +36,29 @@ struct CrewView: View {
     @State var hasRun = 1
     var body: some View {
         NavigationView{
-            VStack {
-                HStack {
-                    Text("Plano")
-                        .font(.title)
-                        .padding(.leading)
-                        .onAppear(perform: {
-                            hasRun += 1
-                            bodies = []
-                            staff = []
-                            jobs = []
-                            retrieveData()
-                            retrieveDataFrisco()
-                            hasRun = 0
-                        })
-                    Spacer()
-                }
-                List(bodies, id: \.name) { staf in
-                    Group {
-                        VStack {
+            //            VStack {
+            //                HStack {
+            //                    Text("Plano")
+            //                        .font(.title)
+            //                        .padding(.leading)
+            //                        .onAppear(perform: {
+            //                            hasRun += 1
+            //                            bodies = []
+            //                            staff = []
+            //                            jobs = []
+            //                            retrieveData()
+            //                            retrieveDataFrisco()
+            //                            hasRun = 0
+            //                        })
+            //                    Spacer()
+            //                }
+            List {
+                Section(header: Text("Plano")) {
+                    ForEach(bodies, id: \.name) { staf in
+                        VStack{
                             HStack {
                                 Text(staf.name)
                                     .bold()
-                                    .onAppear {
-                                        //retrieveData()
-                                    }
-                                    .onDisappear(perform: {                                    })
-                                    .font(.title)
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Text(staf.title)
-                                    //.foregroundColor(.white)
-                                    .font(.caption)
-                                    .frame(alignment: .leading)
-                                Spacer()
-                            }
-                        }
-                    }
-                    
-//                    .listStyle(InsetGroupedListStyle())
-                }
-                HStack {
-                    Text("Frisco")
-                        .font(.title)
-                        .padding(.leading)
-                    Spacer()
-                }
-                List(bodiesF, id: \.name) { staf in
-                    Group {
-                        VStack {
-                            HStack {
-                                Text(staf.name)
-                                    .bold()
-                                    .onAppear {
-                                        //retrieveData()
-                                    }
                                     .onDisappear(perform: {                                    })
                                     .font(.title)
                                 Spacer()
@@ -108,11 +74,50 @@ struct CrewView: View {
                         }
                     }
                 }
-               
+                Section(header: Text("Frisco")) {
+                    ForEach(bodiesF, id: \.name) { staf in
+                        VStack{
+                            HStack {
+                                Text(staf.name)
+                                    .bold()
+                                    .onDisappear(perform: {                                    })
+                                    .font(.title)
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text(staf.title)
+                                    //.foregroundColor(.white)
+                                    .font(.caption)
+                                    .frame(alignment: .leading)
+                                Spacer()
+                            }
+                        }
+                    }
+                }
+                //                List(bodies, id: \.name) { staf in
+                //                    Group {
+                //                        VStack
+                //                    }
+                //
+                //
+                //                }
             }
+            .listStyle(InsetGroupedListStyle())
             .navigationBarTitle(topicString)
+                .onAppear(perform: {
+                hasRun += 1
+                bodies = []
+                staff = []
+                jobs = []
+                retrieveData()
+                retrieveDataFrisco()
+                hasRun = 0
+            })
         }
+       
         .navigationViewStyle(StackNavigationViewStyle())
+        
         
         //    init() {
         //        UITableView.appearance().separatorStyle = .none
@@ -124,70 +129,70 @@ struct CrewView: View {
         staff = []
         jobs = []
         bodies = []
-            db.collection(documentDay).addSnapshotListener {
-                querySnapshot, error in
-                if let e = error {
-                    staff = ["error fetching server"]
-                    print(e)
-                } else {
-                    
-                    //staff = ["found documents"]
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        //staff = ["got inside"]
-                        staff = []
-                        jobs = []
-                        bodies = []
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            if let person = data["person"] as? String, let job = data["job"] as? String{
-                                //let count = staff.count
-                                let staffMember = person
-                                staff.append(staffMember)
-                                jobs.append(job)
-                                bodies.append(cellShape(name: staffMember, title: job))
-                                num = 1
-                            }
+        db.collection(documentDay).addSnapshotListener {
+            querySnapshot, error in
+            if let e = error {
+                staff = ["error fetching server"]
+                print(e)
+            } else {
+                
+                //staff = ["found documents"]
+                if let snapshotDocuments = querySnapshot?.documents {
+                    //staff = ["got inside"]
+                    staff = []
+                    jobs = []
+                    bodies = []
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let person = data["person"] as? String, let job = data["job"] as? String{
+                            //let count = staff.count
+                            let staffMember = person
+                            staff.append(staffMember)
+                            jobs.append(job)
+                            bodies.append(cellShape(name: staffMember, title: job))
+                            num = 1
                         }
                     }
                 }
             }
         }
+    }
     func retrieveDataFrisco() {
         staffF = []
         jobsF = []
         bodiesF = []
-            db.collection("y-"+documentDay+"-Frisco").addSnapshotListener {
-                querySnapshot, error in
-                if let e = error {
-                    staff = ["error fetching server"]
-                    print(e)
-                } else {
-                    
-                    //staff = ["found documents"]
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        //staff = ["got inside"]
-                        staffF = []
-                        jobsF = []
-                        bodiesF = []
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            if let person = data["person"] as? String, let job = data["job"] as? String{
-                                //let count = staff.count
-                                let staffMember = person
-                                staffF.append(staffMember)
-                                jobs.append(job)
-                                bodiesF.append(cellShape(name: staffMember, title: job))
-                                num = 1
-                            }
+        db.collection("y-"+documentDay+"-Frisco").addSnapshotListener {
+            querySnapshot, error in
+            if let e = error {
+                staff = ["error fetching server"]
+                print(e)
+            } else {
+                
+                //staff = ["found documents"]
+                if let snapshotDocuments = querySnapshot?.documents {
+                    //staff = ["got inside"]
+                    staffF = []
+                    jobsF = []
+                    bodiesF = []
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let person = data["person"] as? String, let job = data["job"] as? String{
+                            //let count = staff.count
+                            let staffMember = person
+                            staffF.append(staffMember)
+                            jobs.append(job)
+                            bodiesF.append(cellShape(name: staffMember, title: job))
+                            num = 1
                         }
                     }
                 }
             }
         }
-        //    if staff == []{
-        //        staff = ["this error"]
-        //    }
     }
+    //    if staff == []{
+    //        staff = ["this error"]
+    //    }
+}
 struct CrewView_Previews: PreviewProvider {
     static var previews: some View {
         CrewView()

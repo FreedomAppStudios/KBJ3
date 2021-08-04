@@ -23,7 +23,7 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .font(.title)
                     .bold()
-                Text("Plano")
+                Text("Plano & Frisco")
                     .foregroundColor(.white)
                     .font(.headline)
                     .bold()
