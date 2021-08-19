@@ -65,19 +65,19 @@ struct ContentView: View {
                     }
                     .tag(tag3)
             }
-            CrewView()
+//            CrewView()
+//                .tabItem {
+//                    Label("Crew", systemImage: "person.fill")
+//                    //.foregroundColor(.black)
+//                }
+//                .tag(tag4)
+//
+            CookinView()
                 .tabItem {
-                    Label("Crew", systemImage: "person.fill")
+                    Label("What’s Cooking?", systemImage: "dollarsign.square.fill")
                     //.foregroundColor(.black)
                 }
                 .tag(tag4)
-            
-            DealsView()
-                .tabItem {
-                    Label("Deals", systemImage: "dollarsign.square.fill")
-                    //.foregroundColor(.black)
-                }
-                .tag(tag5)
         }
     }
 }
