@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CookinView: View {
+    
     var body: some View {
         NavigationView{
             List{
@@ -20,12 +21,13 @@ struct CookinView: View {
                 dealCell(deal: "Stay Posted", description: "Text BURGER to 77513 to join our Text Club and see what’s cookin’ at Kenny’s!")
             }
             .onAppear {
-             UITableView.appearance().separatorStyle = .none
+                UITableView.appearance().separatorStyle = .none
             }
             .listStyle(DefaultListStyle())
             
-                .navigationBarTitle("What's Cooking?")
+            .navigationBarTitle("What's Cooking?")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         
         
     }
@@ -44,40 +46,40 @@ struct dealCell: View {
     //let time: String
     
     var body: some View {
-                HStack {
-                    RoundedRectangle(cornerRadius: 25.0)
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .leading, endPoint: .trailing))
-                        .frame(width: 300, height: 155)
-                        .overlay(HStack {
-                            VStack{
-                                HStack{
-                                    Text(deal)
-                                    .foregroundColor(Color.white)
-                                    .font(.title)
-                                        .bold()
-                                        .padding(.leading)
-                                        
-                                Spacer()
-                                }
-                                HStack {
-                                    Text(description)
-                                        .foregroundColor(.white)
-                                        .padding(.leading)
-                                    Spacer()
-//                                    Text(" - ")
-//                                        .foregroundColor(Color.white)
-                                }
-//                                HStack {
-//                                    Text(time)
-//                                        .foregroundColor(Color.white)
-//                                        .padding(.leading)
-//                                    Spacer()
-//                                }
-                                
-                            }
-                        })
-                        .padding()
-                        .frame(maxWidth: 550)
-                }
+        HStack {
+            RoundedRectangle(cornerRadius: 25.0)
+                .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.newRed]), startPoint: .leading, endPoint: .trailing))
+                .frame(width: 300, height: 155)
+                .overlay(HStack {
+                    VStack{
+                        HStack{
+                            Text(deal)
+                                .foregroundColor(Color.black)
+                                .font(.title)
+                                .bold()
+                                .padding(.leading)
+                            
+                            Spacer()
+                        }
+                        HStack {
+                            Text(description)
+                                .foregroundColor(.white)
+                                .padding(.leading)
+                            Spacer()
+                            //                                    Text(" - ")
+                            //                                        .foregroundColor(Color.white)
+                        }
+                        //                                HStack {
+                        //                                    Text(time)
+                        //                                        .foregroundColor(Color.white)
+                        //                                        .padding(.leading)
+                        //                                    Spacer()
+                        //                                }
+                        
+                    }
+                })
+                .padding()
+                .frame(maxWidth: 550)
+        }
     }
 }

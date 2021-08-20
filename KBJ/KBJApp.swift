@@ -68,11 +68,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct KBJ: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @AppStorage("isDarkMode") private var isDarkMode = true
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
+        
         
     }
 }
