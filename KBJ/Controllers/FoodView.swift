@@ -68,8 +68,8 @@ struct FoodView: View {
                         .padding(.leading)
                     
                     HStack {
-                        Text(type)
-                            .padding(.leading)
+//                        Text(type)
+//                            .padding(.leading)
                         Spacer()
                         Text(price)
                             .padding(.trailing)
@@ -110,7 +110,7 @@ struct FoodView: View {
                             .padding(.leading)
                             .frame(width: 400, height: 50, alignment: .leading)  // <--- here
                                         .allowsTightening(true)
-                                        .lineLimit(2)
+                                        .lineLimit(4)
                                         .scaledToFit()
                                         .minimumScaleFactor(0.7)
                     

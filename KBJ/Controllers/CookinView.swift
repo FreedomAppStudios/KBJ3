@@ -12,13 +12,14 @@ struct CookinView: View {
     var body: some View {
         NavigationView{
             List{
+                dealCell(deal: "Our Burgers", description: "We Cook On A Real Wood Fired Grill! All 1/2 lb. Burgers Are Happily Cooked To Your Specs!")
                 dealCell(deal: "Martini Monday", description: "$5 Specialty Martinis!")
                 dealCell(deal: "$2 Rib Tuesday", description: "Smoked in house; Sold by the bone until gone!")
-                dealCell(deal: "Happy Hour", description: "Monday – Friday 2-7pm")
+                dealCell(deal: "Happy Hour", description: "Monday – Friday\n2 - 7pm")
                 dealCell(deal: "Burger Bar", description: "Let us cater your next event, office lunch or family dinner! ")
-                dealCell(deal: "Burger Kits", description: " Cook your own Kenny’s burgers at the house! Perfect for holiday parties & cookouts. Includes everything you need to build your own burgers.")
+                dealCell(deal: "Burger Kit", description: "Cook your own Kenny’s burgers at the house! Perfect for holiday parties & cookouts. Includes everything you need to build your own burgers.")
                 dealCell(deal: "Monthly Special", description: "Check back here to see what is new each month at KBJ!")
-                dealCell(deal: "Stay Posted", description: "Text BURGER to 77513 to join our Text Club and see what’s cookin’ at Kenny’s!")
+                dealCell(deal: "Stay Posted", description: "Text BURGER to 77513 to join our Marketing Club and see what’s cookin’ at all our Kenny’s Locations!")
             }
             .onAppear {
                 UITableView.appearance().separatorStyle = .none

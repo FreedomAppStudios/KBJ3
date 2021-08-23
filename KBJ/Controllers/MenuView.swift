@@ -22,7 +22,7 @@ struct MenuView: View {
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
-                        Text("Special")
+                        Text("Monthly Special")
                             .font(.headline)
                             .padding(.leading, 15)
                             .padding(.top, 5)
@@ -70,22 +70,7 @@ struct MenuView: View {
                         }
                     Divider()
                     VStack(alignment: .leading) {
-                        Text("Fries")
-                            .font(.headline)
-                            .padding(.leading, 15)
-                            .padding(.top, 5)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(alignment: .top, spacing: 0) {
-                                ForEach(foodFries, id: \.foodName) { food in
-                                    NavigationLink(destination: FoodView(name: food.foodName, type: food.type, description: food.toppings, price: food.price, image: food.image, item: food)) {
-                                        CategoryItem(food: food)
-                                    }
-                                }
-                            }
-                        }
-                        .frame(height: frameHeight)
-                        Text("Appetizers")
+                        Text("Appetizers, Sides, Fries")
                             .font(.headline)
                             .padding(.leading, 15)
                             .padding(.top, 5)
