@@ -12,19 +12,19 @@ struct CookinView: View {
     var body: some View {
         NavigationView{
             List{
-                dealCell(deal: "Our Burgers", description: "We Cook On A Real Wood Fired Grill! All 1/2 lb. Burgers Are Happily Cooked To Your Specs!")
-                dealCell(deal: "Martini Monday", description: "$5 Specialty Martinis!")
-                dealCell(deal: "$2 Rib Tuesday", description: "Smoked in house; Sold by the bone until gone!")
-                dealCell(deal: "Happy Hour", description: "Monday – Friday\n2 - 7pm")
-                dealCell(deal: "Burger Bar", description: "Let us cater your next event, office lunch or family dinner! ")
-                dealCell(deal: "Burger Kit", description: "Cook your own Kenny’s burgers at the house! Perfect for holiday parties & cookouts. Includes everything you need to build your own burgers.")
-                dealCell(deal: "Monthly Special", description: "Check back here to see what is new each month at KBJ!")
-                dealCell(deal: "Stay Posted", description: "Text BURGER to 77513 to join our Marketing Club and see what’s cookin’ at all our Kenny’s Locations!")
+                dealCell(image: "ourburgers")
+                dealCell(image: "martinimonday")
+                dealCell(image: "ribs")
+                dealCell(image: "happyhour")
+                dealCell(image: "burgerbar")
+                dealCell(image: "burgerkit")
+                dealCell(image: "monthlyspecial")
+                dealCell(image: "stayposted")
             }
             .onAppear {
                 UITableView.appearance().separatorStyle = .none
             }
-            .listStyle(DefaultListStyle())
+            .listStyle(SidebarListStyle())
             
             .navigationBarTitle("What's Cooking?")
         }
@@ -42,40 +42,20 @@ struct CookinView_Previews: PreviewProvider {
 
 struct dealCell: View {
     
-    let deal: String
-    let description: String
+    let image: String
     //let time: String
     
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.newRed]), startPoint: .leading, endPoint: .trailing))
+//                .fill(LinearGradient(gradient: Gradient(colors: [Color.red, Color.newRed]), startPoint: .leading, endPoint: .trailing))
                 .frame(width: 300, height: 155)
                 .overlay(HStack {
-                    VStack{
-                        HStack{
-                            Text(deal)
-                                .foregroundColor(Color.black)
-                                .font(.title)
-                                .bold()
-                                .padding(.leading)
-                            
-                            Spacer()
-                        }
-                        HStack {
-                            Text(description)
-                                .foregroundColor(.white)
-                                .padding(.leading)
-                            Spacer()
-                            //                                    Text(" - ")
-                            //                                        .foregroundColor(Color.white)
-                        }
-                        //                                HStack {
-                        //                                    Text(time)
-                        //                                        .foregroundColor(Color.white)
-                        //                                        .padding(.leading)
-                        //                                    Spacer()
-                        //                                }
+                    ZStack {
+                        Image(image)
+                            .resizable()
+                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                            .frame(width: 300, height: 155, alignment: .center)
                         
                     }
                 })
