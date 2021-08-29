@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96A3CD2D03ADCDA85D12BF8C /* Pods_KBJTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DB5822F4D15B567374EF2C /* Pods_KBJTests.framework */; };
 		BB1C427726CF0E9E009CBDC4 /* CookinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C427626CF0E9E009CBDC4 /* CookinView.swift */; };
+		BB862EC126DBE6B5002B9269 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB862EC026DBE6B5002B9269 /* GoogleService-Info.plist */; };
 		BBDDDBE6267D54340007CDDF /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDBE5267D54340007CDDF /* OrderView.swift */; };
 		C4886E0C1385A802D189C9DD /* Pods_KBJ_KBJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */; };
 		F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228911045C0687F7E8AE0644 /* Pods_KBJ.framework */; };
@@ -24,7 +25,6 @@
 		FEC3614F2673E0C300E8AB8B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3614E2673E0C300E8AB8B /* MenuView.swift */; };
 		FEC361512673E0D200E8AB8B /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361502673E0D200E8AB8B /* FoodModel.swift */; };
 		FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */; };
-		FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */; };
 		FECD3BB726AB39B500F12017 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD3BB626AB39B500F12017 /* CategoryView.swift */; };
 		FECD3BB926ABB94600F12017 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD3BB826ABB94600F12017 /* FoodView.swift */; };
 		FEE7AD8D26AA6FBF00899784 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7AD8C26AA6FBF00899784 /* MapView.swift */; };
@@ -57,6 +57,7 @@
 		8B7F45E88D323A4933A22BB0 /* Pods-KBJTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.release.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E569CE99EA939994E9D1FB6 /* Pods-KBJ-KBJUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ-KBJUITests.release.xcconfig"; path = "Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BB1C427626CF0E9E009CBDC4 /* CookinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookinView.swift; sourceTree = "<group>"; };
+		BB862EC026DBE6B5002B9269 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBDDDBE5267D54340007CDDF /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		C159F740ACBD242F7286D825 /* Pods-KBJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJ.release.xcconfig"; path = "Target Support Files/Pods-KBJ/Pods-KBJ.release.xcconfig"; sourceTree = "<group>"; };
 		DD478813C5AD6E4C5226E6C9 /* Pods-KBJTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBJTests.debug.xcconfig"; path = "Target Support Files/Pods-KBJTests/Pods-KBJTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		FEC361522673E42D00E8AB8B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FEC361C62673E70E00E8AB8B /* KBJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KBJ.entitlements; sourceTree = "<group>"; };
 		FEC361C72673E71400E8AB8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FECD3BB626AB39B500F12017 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		FECD3BB826ABB94600F12017 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		FEE7AD8C26AA6FBF00899784 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		FEC361212673E08200E8AB8B /* KBJ */ = {
 			isa = PBXGroup;
 			children = (
-				FEC361C82673E95700E8AB8B /* GoogleService-Info.plist */,
 				FEC361C72673E71400E8AB8B /* Info.plist */,
+				BB862EC026DBE6B5002B9269 /* GoogleService-Info.plist */,
 				FEC361C62673E70E00E8AB8B /* KBJ.entitlements */,
 				FEC361222673E08200E8AB8B /* KBJApp.swift */,
 				FEE7AD8B26AA6F9B00899784 /* Models */,
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC361532673E42D00E8AB8B /* Launch Screen.storyboard in Resources */,
-				FEC361C92673E95700E8AB8B /* GoogleService-Info.plist in Resources */,
+				BB862EC126DBE6B5002B9269 /* GoogleService-Info.plist in Resources */,
 				FEC3612A2673E08300E8AB8B /* Preview Assets.xcassets in Resources */,
 				FEC361272673E08300E8AB8B /* Assets.xcassets in Resources */,
 			);
@@ -647,7 +647,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KBJ/KBJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"KBJ/Preview Content\"";
 				DEVELOPMENT_TEAM = J3FB3HVY3D;
 				ENABLE_PREVIEWS = YES;
@@ -668,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kennysburgersapp.KBJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -685,7 +685,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KBJ/KBJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"KBJ/Preview Content\"";
 				DEVELOPMENT_TEAM = J3FB3HVY3D;
 				ENABLE_PREVIEWS = YES;
@@ -706,7 +706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kennysburgersapp.KBJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

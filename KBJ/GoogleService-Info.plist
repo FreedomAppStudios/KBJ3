@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1016905160816-6d9n53abterve0ecirg420bu50tctpls.apps.googleusercontent.com</string>
+	<string>1016905160816-2ueve6565hd29magrjr9ihfs81215qkq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1016905160816-6d9n53abterve0ecirg420bu50tctpls</string>
+	<string>com.googleusercontent.apps.1016905160816-2ueve6565hd29magrjr9ihfs81215qkq</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBd-siB0zwdAo8ryf9_Jaz7cRGtj68t9TE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.jessicamorris.KBJ</string>
+	<string>com.kennysburgersapp.KBJ</string>
 	<key>PROJECT_ID</key>
 	<string>kennys-burger-joint</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1016905160816:ios:1db95b6c7c5f11afe4bcb5</string>
+	<string>1:1016905160816:ios:ebaa5a09aaf775eee4bcb5</string>
 </dict>
 </plist>
