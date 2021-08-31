@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 import Firebase
+import FirebaseMessaging
+import OSLog
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     

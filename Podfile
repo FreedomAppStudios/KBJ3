@@ -8,6 +8,7 @@ use_frameworks!
 # Pods for KBJ
 pod 'Firebase/Firestore'
 pod 'Firebase/Messaging'
+pod 'Firebase/Analytics'
 
 target 'KBJTests' do
 inherit! :search_paths

@@ -41,9 +41,9 @@ struct HomeView: View {
                 InfoView(text: "(214) 618-8001", imageName: "phone.fill", location: "Frisco")
                 LinkView(text: "kennysburgerjoint.com", imageName: "globe")
                     .padding(.bottom)
-                //Spacer()
                 
             }
+            
         }
     }
 }
@@ -74,7 +74,7 @@ struct InfoView: View {
                     .padding(.trailing)
             })
             .padding()
-            .frame(maxWidth: 550)
+            .frame(maxWidth: 350)
     }
 }
 struct LinkView: View {
@@ -96,7 +96,7 @@ struct LinkView: View {
                                 .foregroundColor(Color.newRed)
                         })
                         .padding()
-                        .frame(maxWidth: 550)
+                        .frame(maxWidth: 350)
                 }
              })
     }
@@ -113,22 +113,23 @@ struct LogoView: View {
                         .stroke(Color.white, lineWidth: 4))
             .shadow(radius: 7)
             .offset(y: -140)
-            .padding(.bottom, -130)
+            .padding(.bottom, -120)
     }
 }
 struct BurgerView: View {
     var body: some View {
         Image("royal")
             .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 400, height: 300)
+            .aspectRatio(contentMode: .fit)
+            .frame(maxWidth: .infinity)
+            .frame(height: .infinity)
             .edgesIgnoringSafeArea(.all)
 //            .clipShape(Circle())
 //            .overlay(Circle()
 //                        .stroke(Color.white, lineWidth: 4))
 //            .shadow(radius: 7)
 //            .offset(y: -140)
-            .padding(.bottom, -130)
+            .padding(.bottom, -170)
     }
 }
 struct CustomColor {
