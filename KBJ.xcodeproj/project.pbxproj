@@ -13,7 +13,7 @@
 		BBDDDBE6267D54340007CDDF /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDBE5267D54340007CDDF /* OrderView.swift */; };
 		C4886E0C1385A802D189C9DD /* Pods_KBJ_KBJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1208277116534A11A9FD6A28 /* Pods_KBJ_KBJUITests.framework */; };
 		F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228911045C0687F7E8AE0644 /* Pods_KBJ.framework */; };
-		FEC0B2D826AF9FE900CAE4EB /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = FEC0B2D726AF9FE900CAE4EB /* iPhoneNumberField */; };
+		FEC0B2D826AF9FE900CAE4EB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = FEC0B2D726AF9FE900CAE4EB /* SwiftPackageProductDependency */; };
 		FEC361232673E08200E8AB8B /* KBJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361222673E08200E8AB8B /* KBJApp.swift */; };
 		FEC361252673E08200E8AB8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC361242673E08200E8AB8B /* ContentView.swift */; };
 		FEC361272673E08300E8AB8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC361262673E08300E8AB8B /* Assets.xcassets */; };
@@ -89,7 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6D462E338533764A6F9B0DF /* Pods_KBJ.framework in Frameworks */,
-				FEC0B2D826AF9FE900CAE4EB /* iPhoneNumberField in Frameworks */,
+				FEC0B2D826AF9FE900CAE4EB /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,7 @@
 				FEC3611B2673E08200E8AB8B /* Sources */,
 				FEC3611C2673E08200E8AB8B /* Frameworks */,
 				FEC3611D2673E08200E8AB8B /* Resources */,
-				4DF30F1F10369BFE9C462110 /* [CP] Embed Pods Frameworks */,
+				55248C2BF7EE35726D186E62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,7 +249,7 @@
 			);
 			name = KBJ;
 			packageProductDependencies = (
-				FEC0B2D726AF9FE900CAE4EB /* iPhoneNumberField */,
+				FEC0B2D726AF9FE900CAE4EB /* SwiftPackageProductDependency */,
 			);
 			productName = KBJ;
 			productReference = FEC3611F2673E08200E8AB8B /* KBJ.app */;
@@ -282,7 +282,7 @@
 				FEC361352673E08300E8AB8B /* Sources */,
 				FEC361362673E08300E8AB8B /* Frameworks */,
 				FEC361372673E08300E8AB8B /* Resources */,
-				5147A1E0C92C10865108318D /* [CP] Embed Pods Frameworks */,
+				A6A03AC095D40868C7EAD45D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,7 +327,7 @@
 			);
 			mainGroup = FEC361162673E08200E8AB8B;
 			packageReferences = (
-				FEC0B2D626AF9FE900CAE4EB /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				FEC0B2D626AF9FE900CAE4EB /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = FEC361202673E08200E8AB8B /* Products */;
 			projectDirPath = "";
@@ -391,7 +391,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4DF30F1F10369BFE9C462110 /* [CP] Embed Pods Frameworks */ = {
+		55248C2BF7EE35726D186E62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,23 +406,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ/Pods-KBJ-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5147A1E0C92C10865108318D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7D69B6B3BFE1F1AB5F1AFE40 /* [CP] Check Pods Manifest.lock */ = {
@@ -467,6 +450,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6A03AC095D40868C7EAD45D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KBJ-KBJUITests/Pods-KBJ-KBJUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -857,7 +857,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FEC0B2D626AF9FE900CAE4EB /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
+		FEC0B2D626AF9FE900CAE4EB /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField.git";
 			requirement = {
@@ -868,9 +868,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FEC0B2D726AF9FE900CAE4EB /* iPhoneNumberField */ = {
+		FEC0B2D726AF9FE900CAE4EB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FEC0B2D626AF9FE900CAE4EB /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
+			package = FEC0B2D626AF9FE900CAE4EB /* RemoteSwiftPackageReference */;
 			productName = iPhoneNumberField;
 		};
 /* End XCSwiftPackageProductDependency section */
