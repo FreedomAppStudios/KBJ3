@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct HomeView: View {
     let swiftColor = UIColor(red: 181/255, green: 24/255, blue: 24/255, alpha: 1)
@@ -168,3 +169,4 @@ extension UIColor {
 extension Color {
     static let newRed = Color(red: 181/256, green: 24/256, blue: 24/256)
 }
+

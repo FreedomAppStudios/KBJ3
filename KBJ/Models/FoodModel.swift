@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+var testy = ""
 var foodOrdered = [OrderItem]()
 struct FoodCellView: View {
     let foodName: String

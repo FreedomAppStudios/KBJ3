@@ -6,122 +6,106 @@
 //
 
 import SwiftUI
-import UIKit
 import Firebase
-import FirebaseMessaging
-import OSLog
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    
-    private var gcmMessageIDKey = "gcm_message_idKey"
-    static var fcmToken = String()
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-        registerForPushNotifications()
-        
-        return true
-    }
-    
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            self?.getNotificationSettings()
-        }
-    }
-    
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-    
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-       
-        AppDelegate.fcmToken = deviceToken.hexString
-    }
-    
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error
-    ) {
-        print("Failed to register: \(error.localizedDescription)")
-    }
-    
-    func application(
-        _ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-       
-        print(userInfo)
-        completionHandler(.newData)
-    }
-}
+import UserNotifications
 
 @main
 struct KBJ: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @AppStorage("isDarkMode") private var isDarkMode = true
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+            //print("hello")
         }
-        
-        
     }
 }
-@available(iOS 10, *)
-extension AppDelegate : UNUserNotificationCenterDelegate {
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    let gcmMessageIDKey = "gcm.message_id"
     
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification,
-        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
         
-        let userInfo = notification.request.content.userInfo
-        print("Will Present User Info: \(userInfo)")
+        Messaging.messaging().delegate = self
         
-        completionHandler([[.banner, .sound]])
-    }
-    
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        didReceive response: UNNotificationResponse,
-        withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let userInfo = response.notification.request.content.userInfo
-        
-        if response.actionIdentifier == "accept" {
-            print("Did Receive User Info: \(userInfo)")
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
             
-            completionHandler()
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
         }
+        
+        application.registerForRemoteNotifications()
+        return true
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        print(userInfo)
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
+
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        let dataDict: [String: String] = [AppDelegate.fcmToken: fcmToken ?? ""]
-        NotificationCenter.default.post(name: NSNotification.Name("FCMToken"), object: nil, userInfo: dataDict)
-
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
-        AppDelegate.fcmToken = fcmToken!
+        
+        let deviceToken:[String: String] = ["token": fcmToken ?? ""]
+        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
     }
 }
+@available(iOS 12, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
 
-extension Data {
-    var hexString: String {
-        let hexString = map { String(format: "%02.2hhx", $0) }.joined()
-        return hexString
+  // Receive displayed notifications for iOS 10 devices.
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    let userInfo = notification.request.content.userInfo
+
+    if let messageID = userInfo[gcmMessageIDKey] {
+        print("Message ID: \(messageID)")
     }
+
+    print(userInfo)
+
+    // Change this to your preferred presentation option
+    completionHandler([[.banner, .badge, .sound]])
+  }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+    }
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              didReceive response: UNNotificationResponse,
+                              withCompletionHandler completionHandler: @escaping () -> Void) {
+    let userInfo = response.notification.request.content.userInfo
+
+    if let messageID = userInfo[gcmMessageIDKey] {
+      print("Message ID from userNotificationCenter didReceive: \(messageID)")
+    }
+
+    print(userInfo)
+
+    completionHandler()
+  }
 }
